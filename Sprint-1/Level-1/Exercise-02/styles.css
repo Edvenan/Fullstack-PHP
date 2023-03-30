@@ -1,0 +1,138 @@
+
+/* Fixem max_width i centrem contingut, afegint un padding per que quedi enmarcat */
+body {
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 10px;
+}
+
+/* Definim característiques del canto típic a aplicar a totes les boxes ppals. */
+.box_border{
+        border: 10px solid black;
+}
+
+/* Definim altura típica a aplicar a totes les sub-boxes */
+.box_height{
+    height: 10px;
+}
+
+/* Definim propietas/característiques per a cada box ppal. i sub-boxes */
+.box-1 {
+    background: #2D4059;
+    display: flex;
+    justify-content:space-between;
+    padding: 10px;
+    margin: 0 auto;
+    border-bottom: 5px solid black;
+}
+    .box-11 {
+        background: #EA5455;
+        width:15%;
+        margin-right: 5px;
+    }
+    .box-12 {
+        background: #EA5455;
+        width:70%;
+        margin: 0 5px;
+    }
+
+    .box-13 {
+        background: #EA5455;
+        width:15%;
+        margin-left: 5px;
+    }
+
+.box-2 {
+    background-color: #F07B3F;
+    padding: 10px;
+    border-top:5px;
+}
+    .box-21 {
+        background: #FED460;
+        height: 10px;
+    }
+
+
+.box_wrapper{
+    display: flex;
+    margin:10px 0;
+}
+
+    .box-3 {
+        background:#4E4E6A;
+        width: 60%;
+        padding: 10px;
+        border-right: 5px solid black;
+    }
+        .box-31 {
+            display: flex;
+            justify-content: space-between;
+        }
+            .box-311 {
+                background: #1F6CB0;
+                width:50%;
+                margin-right: 5px;
+            }
+            .box-312 {
+                background: #1F6CB0;
+                width:50%;
+                margin-left: 5px;
+            }
+        .box-32 {
+            display: flex;
+            justify-content: space-between;
+            margin-top:10px;
+            margin-bottom:10px
+        }
+            .box-321 {
+                background: #1F6CB0;
+                width:50%;
+                margin-right: 5px;
+            }
+            .box-322 {
+                background: #1F6CB0;
+                width:50%;
+                margin-left: 5px;
+            }
+
+        .box-33 {
+            background: #70A3C4;
+        }
+
+    .box-4 {
+        background:#F73F52;
+        width: 40%;
+        padding: 10px;
+        border-left: 5px solid black;
+    }
+        .box-41 {
+            background: #FED460;
+
+        }
+        .box-42 {
+            background: #FED460;
+            margin-top: 5px;
+        }
+
+.box-5 {
+    background:#E6AF2E;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For tablets: */
+    .box_wrapper {
+        display: block;
+    }
+    
+    .box-3 {
+        border: 10px solid yellow;
+        border-bottom: 5px solid yellow;
+        width:auto;
+    }
+ 
+    .box-4 {
+        border: 10px solid yellow;
+        border-top: 5px solid yellow;
+        width:auto;
+    }
+}
