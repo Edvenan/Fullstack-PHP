@@ -1,0 +1,270 @@
+
+/* Fixem max_width i centrem contingut, afegint un padding per que quedi tot enmarcat */
+body {
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 10px;
+}
+
+/* Definim estil del canto típic a aplicar a totes les boxes ppals. */
+.box_border{
+        border: 10px solid black;
+}
+
+/* Definim altura típica a aplicar a totes les sub-boxes */
+.box_height{
+    height: 10px;
+}
+
+/* Definim estil dels botons de la barra superior de navegació */
+.btn{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+}
+
+/* Enfosquim font dels botons quan passem mouse per sobre (mouse-over / roll-over) */
+.btn:hover {
+    opacity: 1;
+}
+
+/* imatge de fons i estil de la capçalera (icona, menú, foto ppal i text ppal.) */
+#header {
+    background-image: url("images/header.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 165% cover;
+    height:400px;
+    position:relative;
+}
+/* Definim estils per a cada box ppal. i sub-boxes */
+        .box-1 {
+            display: flex;
+            justify-content:space-between;
+            padding: 10px;
+            margin: 0 auto;
+        }
+                    .box-11 {
+                        width:5%;
+                        margin-right: 5px;
+                    }
+                    .box-12 {
+                        width:75%;
+                        display: flex;
+                        justify-content:space-between;
+
+                    }
+
+                    .box-13 {
+                        width:5%;
+                        margin-left: 5px;
+                        margin-right: 25px;
+                        display: flex;
+                        justify-content:right;
+                    }
+        .box-2 {
+            position:absolute;
+            bottom: 0;
+            margin: 0 auto;
+            width: 100%;
+        }
+                    .box-21 {
+                        /* trnanspartent grey box style */                        
+                        background: rgba(150, 150, 150, 0.3);
+                        margin:auto auto 0px auto;
+                        height: 100px;
+                        width: 88%;
+                        padding-top: 30px;
+                        /* font style */                        
+                        font-family: 'IM Fell Double Pica', serif;
+                        color: #FD7B54;
+                        font-size: 33px;
+                        text-align: center;
+                        opacity: .8
+                        
+                    }
+.box_wrapper{
+    display: flex;
+    margin:10px 0;
+}
+
+            .box-3 {
+                background:#4E4E6A;
+                width: 60%;
+                padding: 10px;
+                border-right: 5px solid black;
+            }
+                .box-31 {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                    .box-311 {
+                        background: #1F6CB0;
+                        width:50%;
+                        margin-right: 5px;
+                    }
+                    .box-312 {
+                        background: #1F6CB0;
+                        width:50%;
+                        margin-left: 5px;
+                    }
+                .box-32 {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top:10px;
+                    margin-bottom:10px
+                }
+                    .box-321 {
+                        background: #1F6CB0;
+                        width:50%;
+                        margin-right: 5px;
+                    }
+                    .box-322 {
+                        background: #1F6CB0;
+                        width:50%;
+                        margin-left: 5px;
+                    }
+
+                .box-33 {
+                    background: #70A3C4;
+                }
+
+            .box-4 {
+                background:#F73F52;
+                width: 40%;
+                padding: 10px;
+                border-left: 5px solid black;
+            }
+                .box-41 {
+                    background: #FED460;
+
+                }
+                .box-42 {
+                    background: #FED460;
+                    margin-top: 5px;
+                }
+
+.box-5 {
+    background:#E6AF2E;
+}
+
+/* Medium devices (landscape tablets, 768px and down to 600px) */
+@media only screen and (max-width: 768px) and (min-width: 600px) {
+    /* For tablets: */
+    .box_wrapper {
+        display: block;
+    }
+    
+            .box-3 {
+                border: 10px solid yellow;
+                border-bottom: 5px solid yellow;
+                width:auto;
+            }
+        
+            .box-4 {
+                border: 10px solid yellow;
+                border-top: 5px solid yellow;
+                width:auto;
+            }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    .btn{
+        font-size: 12px;
+    }
+
+            .box-1 {
+                display: block;
+                border-bottom: 0px;
+                text-align: center;
+            }
+                    .box-11 {
+                        width: auto;
+                        margin: 0;
+                    }
+                    .box-12 {
+                        display: block;
+                        width: auto;
+                        margin: 10px 0;
+                    }
+                    .box-13 {
+                        display: block;
+                        width: auto;
+                        margin: 0;
+                    }
+
+                    .box-21 {
+                        font-size: 20px;
+                        
+                    }
+    .box_wrapper {
+        display: block;
+        height:auto;
+    }
+    
+            .box-3 {
+                background: #09506F;
+                border: 10px solid yellow;
+                border-bottom: 5px solid yellow;
+                width:auto;
+                height:auto;
+            }
+            
+                    .box-31 {
+                        display: block;
+                        height:auto;
+                    }
+                            .box-311 {
+                                background: #62959C;
+                                width:auto;
+                                height: 10px;
+                                margin: 0 0 10px 0;
+                            }
+                            .box-312 {
+                                background: #62959C;
+                                width:auto;
+                                height: 10px;
+                                margin: 0 0 10px 0;
+                            }
+                    .box-32 {
+                        display: block;
+                        height:auto;
+                    }
+                            .box-321 {
+                                background: #62959C;
+                                width:auto;
+                                height: 10px;
+                                margin: 0 0 10px 0;
+                            }
+                            .box-322 {
+                                background: #62959C;
+                                width:auto;
+                                height: 10px;
+                                margin: 0 0 10px 0;
+                            }
+                    .box-33 {
+                        background: #A3DDCB;
+                    }
+
+            .box-4 {
+                background: #FD7B54;
+                border: 10px solid yellow;
+                border-top: 5px solid yellow;
+                width:auto;
+                height:auto;
+            }
+                    .box-41 {
+                        background: #FDB36B;
+
+                    }
+                    .box-42 {
+                        background: #FDB36B;
+                        margin-top: 5px;
+                    }
+    
+}
