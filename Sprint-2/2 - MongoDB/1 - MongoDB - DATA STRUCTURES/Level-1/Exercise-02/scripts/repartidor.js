@@ -1,0 +1,2 @@
+
+db.createCollection( 'repartidor', {validator: {$jsonSchema: {bsonType: 'object',title:'repartidor',required: [         'nom',          'cognom1',          'cognom2',          'telefon',          'nif'],properties: {nom: {bsonType: 'string'},cognom1: {bsonType: 'string'},cognom2: {bsonType: 'string'},telefon: {bsonType: 'string'},nif: {bsonType: 'string'}}         }      }});  

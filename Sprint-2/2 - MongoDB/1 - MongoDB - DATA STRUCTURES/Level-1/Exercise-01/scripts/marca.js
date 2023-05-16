@@ -1,0 +1,2 @@
+
+db.createCollection( 'marca', {validator: {$jsonSchema: {bsonType: 'object',title:'marca',required: [         'nom',          'proveidor'],properties: {nom: {bsonType: 'string'},proveidor: {bsonType: 'objectId'}}         }      }});  

@@ -1,0 +1,2 @@
+
+db.createCollection( 'venedor', {validator: {$jsonSchema: {bsonType: 'object',title:'venedor',required: [         'nom',          'cognom1',          'cognom2'],properties: {nom: {bsonType: 'string'},cognom1: {bsonType: 'string'},cognom2: {bsonType: 'string'}}         }      }});  
