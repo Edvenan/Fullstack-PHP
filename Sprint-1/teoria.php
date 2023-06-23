@@ -33,7 +33,7 @@
             echo trim($text) ."<br>";
             
             // strtoupper() / strtolower()  // strlen()  // strrev() //str_word_count()
-            // strpos(strign, word)     //  str_replace(<w_2b_replaced>, <new_w>, str)
+            // strpos(string, word)     //  str_replace(<w_2b_replaced>, <new_w>, str)
             
             // explode(separator, string) -> convierte string en array
             $mensaje = "Hola amigo mio";
@@ -89,7 +89,8 @@
             
 
             // ARRAYS:  
-            //array_sum(array)       // array_splice(array, index)      // shuffle(array)       // count(array)
+            //array_sum(array)       // array_splice(array, index, #elements)      // shuffle(array)       // count(array)
+            // array_count_values(array)   // in_array(element, array) -> True/False    // array_diff($myarray, [$value])
             // array_search(value, array) -> index      // array_merge(array1, array2)  //str_split(str)-> array
 
             // sumar contenido de un array
@@ -102,15 +103,25 @@
             
             // eliminar elemento de un array
             $color = array("rojo", "verde", "azul");
-            array_splice($color,2); // azul
+            array_splice($color,2,1); // azul
             echo "<pre>";
             var_dump($color);
             echo "</pre>";
             
+            // alrternative method:  (creates a new array w/o the element $value)
+            var_dump(array_diff($myarray, [$value]));
+            echo "<br>";
+
             // contar elementos array (len)
             echo count($color).'<br>';
-            echo count($numeros).'<br>';
-            
+                   
+            // confirma si elemento existe en array
+            if (in_array($value, $myarray)) {}
+
+            // cuenta num de veces que aparece cada elemento de un array
+            $a=array("A","Cat","Dog","A","Dog");
+            print_r(array_count_values($a));        // Array ( [A] => 2 [Cat] => 1 [Dog] => 2 )
+
             // buscar posicion de elementos en array
             echo array_search(4, $numeros).'<br>'; // elemento  -devuelve posicion
             
@@ -118,24 +129,24 @@
             $string1 = ["Ho"]; $string2 = ["la"];
             $final = array_merge($string1, $string2);
             
-            // ordenar arrays
+            // ordenar arrays (modifica el array original)
             asort($final);
             
-            // reverse sorting
+            // reverse sorting (modifica el array original)
             rsort($final);
             
-            //ordenar en reverso sin perder posicion
+            //ordenar en reverso sin perder posicion (modifica el array original)
             arsort($final);
             
             // igualdad
-            $a = 5 === 5.0; // no identico
+            $a = 5 === 5.0; // no identico  $A valdrá 1 (True) si se cumple la condicion, None (False) si no.
             var_dump($a);
             $a = 5 === 5; // identico
             var_dump($a);
             $a = 5 == 5.0; // igual
             var_dump($a);
             
-            // spaceship <=>:  0: iguales 1: a>b -1: a<b
+            // spaceship a <=> b:  iguales=0, a>b= 1, a<b= -1
             $a = 5 <=> 7; // devuelve -1
             $a = 5 <=> 5.0; // devuelve 0
             
