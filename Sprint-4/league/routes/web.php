@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\TeamController;
-use App\Http\Controllers\GameController;
-use App\Http\Controllers\HomeController;
+use App\Http\Livewire\ShowGames;
+use App\Http\Livewire\ShowRanking;
+use App\Http\Livewire\ShowTeams;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,25 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', [HomeController::class. '__invoke']); is the same as:
-Route::get('/', HomeController::class)->name('home');
+// Home route (before login & after login)
+/* Route::get('/', function () {
+    return view('home');
+})->name('home'); */
 
-Route::controller(TeamController::class)->group(function(){
-    Route::get('teams'              , 'index')->name('teams.index');
-    Route::get('teams/create'       , 'create')->name('teams.create');
-    Route::post('teams'             , 'store')->name('teams.store');
-    Route::get('teams/show/{team}'  , 'show')->name('teams.show');
-    Route::get('teams/showAll'      , 'showAll')->name('teams.showAll');
-    Route::get('teams/update/{team}' , 'update')->name('teams.update');
-    Route::get('teams/delete/{team}' , 'delete')->name('teams.delete');
-});
+// Home route (before login & after login)
+Route::get('/', ShowRanking::class)->name('home');
 
-Route::controller(GameController::class)->group(function(){
-    Route::get('games'              , 'index')->name('games.index');
-    Route::get('games/create'       , 'create')->name('games.create');
-    Route::post('games'             , 'store')->name('games.store');
-    Route::get('games/show/{game}'  , 'show')->name('games.show');
-    Route::get('games/showAll'      , 'showAll')->name('games.showAll');
-    Route::get('games/update/{game}' , 'update')->name('games.update');
-    Route::get('games/delete/{game}' , 'delete')->name('games.delete');
-});
+// routes accessible only after successful login via components acting as controllers
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->get('/teams', ShowTeams::class)->name('teams');
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->get('/games', ShowGames::class)->name('games');
+
+/* Route::resource('teams', TeamController::class)->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']); */
+/* Route::resource('games', GameController::class)->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']); */
