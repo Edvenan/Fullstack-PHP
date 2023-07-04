@@ -16,7 +16,7 @@
                     <thead> {{-- Table header --}}
                         <tr>
                             <th {{-- Table header: Rank --}}
-                                class="cursor-pointer px-5 py-3  border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                                class="w-24 cursor-pointer px-3 py-3  border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
                                 wire:click="order('points')">
                                 Rank
 
@@ -28,12 +28,12 @@
                                         <i class=" fas fa-sort-alpha-up-alt float-right "></i>
                                     @endif
                                 @else
-                                    <i class="fas fa-sort float-right sm:float mt-1"></i>
+                                    <i class="fas fa-sort float-right sm:float"></i>
                                 @endif
                             
                             </th>
                             <th {{-- Table header: Team --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
                                 wire:click="order('name')">
                                 Team
 
@@ -50,7 +50,7 @@
 
                             </th>
                             <th {{-- Table header: Num Games --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
                                 wire:click="order('num_games')">
                                 Matches
                                 
@@ -67,7 +67,7 @@
 
                             </th>
                             <th {{-- Table header: Games Won --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider hidden lg:table-cell"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell"
                                 wire:click="order('won')">
                                 Won
                                 
@@ -84,7 +84,7 @@
 
                             </th>
                             <th {{-- Table header: Games Draw --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider hidden lg:table-cell"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell"
                                 wire:click="order('draw')">
                                 Draw
 
@@ -101,7 +101,7 @@
 
                             </th>
                             <th {{-- Table header: Games Lost --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider hidden lg:table-cell"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell"
                                 wire:click="order('lost')">
                                 Lost
 
@@ -118,7 +118,7 @@
 
                             </th>
                             <th {{-- Table header: Goals --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider hidden lg:table-cell"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell"
                                 wire:click="order('goals')">
                                 Goals
 
@@ -135,7 +135,7 @@
 
                             </th>
                             <th {{-- Table header: Goals Against --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider hidden lg:table-cell"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell"
                                 wire:click="order('against')">
                                 Against
 
@@ -152,7 +152,7 @@
 
                             </th>
                             <th {{-- Table header: Goal Average --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider hidden md:table-cell"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
                                 wire:click="order('average')">
                                 +/-.
 
@@ -169,7 +169,7 @@
 
                             </th>
                             <th {{-- Table header: Points --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
                                 wire:click="order('points')">
                                 Pts.
                             </th>
@@ -179,7 +179,7 @@
                         @foreach ($teams as $pos=>$team)
 
                             <tr>
-                                <td class="px-5 py-5 border-b text-center border-gray-200 bg-white text-sm">
+                                <td class="w-24 px-3 py-5 border-b text-center border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900  whitespace-no-wrap">
                                         {{$team->position()}}
                                     </p>
@@ -242,6 +242,7 @@
                             </tr>
                         
                         @endforeach
+                      
                     </tbody>
                 </table>
 
@@ -256,6 +257,11 @@
                     No teams found!
             </x-alert-message>
             
+        @endif
+        @if($teams->hasPages())
+        <div class="pl-4 pb-4">
+            {{$teams->links()}}
+        </div>
         @endif
         
     </div>

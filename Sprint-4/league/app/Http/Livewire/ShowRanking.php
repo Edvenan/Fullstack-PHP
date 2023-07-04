@@ -4,9 +4,11 @@ namespace App\Http\Livewire;
 
 use App\Models\Team;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ShowRanking extends Component
 {
+    use WithPagination;
 
     // vars to sort table by columns
     public $sort = 'points';
@@ -15,7 +17,7 @@ class ShowRanking extends Component
 
     public function render()
     {
-        $teams = Team::orderBy($this->sort, $this->direction)->orderBy('name', 'asc')->get();
+        $teams = Team::orderBy($this->sort, $this->direction)->orderBy('name', 'asc')->paginate(10);
 
         return view('livewire.show-ranking',compact('teams'));
     }

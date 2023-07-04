@@ -7,24 +7,21 @@
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-
-        <div class="px-12 py-4">
-            <x-input class="w-full" placeholder="Search games by team..." type="text" wire:model="search">
+        {{-- search bar & Creata Game button --}}
+        <div class="py-4 flex items-center">
+            <x-input class="flex-1 mr-4" placeholder="Search game by team..." type="text" wire:model="search">
             </x-input>
+            @livewire('create-game')
         </div>
 
         @if ($games->count())
-
-            <div class="px-6 py-4">
-                <input type="text" wire:model="search">
-            </div>
-            
+            {{-- Games found --}}
             <x-table>
                 <table class="min-w-full leading-normal">
                     <thead> {{-- Table header --}}
-                        <tr>
+                        <tr class="border-gray-400">
                             <th {{-- Table header: Team 1--}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                                class= "cursor-pointer py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
                                 wire:click="order('team_1.name')">
                                 Local
 
@@ -41,11 +38,11 @@
 
                             </th>
                             <th {{-- Table header: Score --}}
-                                class=" px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider">
                                 <p></p>
                             </th>   
                             <th {{-- Table header: Team 2 --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
                                 wire:click="order('team_2.name')">
                                 Visitor
 
@@ -62,7 +59,7 @@
 
                             </th>
                             <th {{-- Table header: Date --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
                                 wire:click="order('date')">
                                 Date
                                 
@@ -79,7 +76,7 @@
 
                             </th>
                             <th {{-- Table header: Time --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider hidden lg:table-cell"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell"
                                 wire:click="order('time')">
                                 Time
                                 
@@ -96,7 +93,7 @@
 
                             </th>
                             <th {{-- Table header: Stadium --}}
-                                class="cursor-pointer px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider hidden lg:table-cell"
+                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell"
                                 wire:click="order('team_1.stadium')">
                                 Stadium
 
@@ -112,38 +109,41 @@
                                 @endif
 
                             </th>
+                            <th {{-- Table header: actions --}}
+                            class="px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider ">
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($games as $game)
 
-                            <tr>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <tr class="bg-white ">
+                                <td class="px-5 py-5 border-border-b-4 border-gray-200  text-sm">
                                     <div class="flex items-center">
+
+                                        <div class="flex-1 w-28 mr-3">
+                                            <p class="text-right text-gray-900 whitespace-no-wrap">
+                                                {{$game->team_1->name}}
+                                            </p>
+                                        </div>
                                         <div class="flex-shrink-0 w-10 h-10">
                                             <img class="w-full h-full "
                                                 
                                                 src="{{$game->team_1->emblem_photo}}"
                                                 alt="" />
                                         </div>
-                                        <div class="ml-3">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                {{$game->team_1->name}}
-                                            </p>
-                                        </div>
-                                        
                                     </div>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <td class="w-16 py-5 border-border-b-4 border-gray-200  text-sm">
                                     <div class="ml-3">
                                         <p class="text-gray-900 whitespace-no-wrap">
                                             {{$game->score_team_1}}
-                                            &emsp;-&emsp;
+                                            -
                                             {{$game->score_team_2}}
                                         </p>
                                     </div>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <td class="px-5 py-5 border-border-b-4 border-gray-200  text-sm">
                                     <div class="flex items-center">
                                         
                                         <div class="flex-shrink-0 w-10 h-10">
@@ -152,37 +152,43 @@
                                                 src="{{$game->team_2->emblem_photo}}"
                                                 alt="" />
                                         </div>
-                                        <div class="ml-3">
-                                            <p class="text-gray-900 whitespace-no-wrap">
+                                        <div class="flex-1 w-28 ml-3">
+                                            <p class="text-left text-gray-900 whitespace-no-wrap">
                                                 {{$game->team_2->name}}
                                             </p>
                                         </div>
+
                                     </div>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <td class="px-5 py-5 border-border-b-4 border-gray-200  text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{$game->date}}
+                                        {{date('j F, Y', strtotime($game->date))}}
                                     </p>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                                <td class="px-5 py-5 border-border-b-4 border-gray-200  text-sm hidden lg:table-cell">
                                     <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{$game->time}}
+                                        {{\Carbon\Carbon::createFromFormat('H:i:s',$game->time)->format('H:i')}}
                                     </p>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                                <td class="px-5 py-5 border-border-b-4 border-gray-200  text-sm hidden lg:table-cell">
                                     <p class="text-gray-900 whitespace-no-wrap text-center">
                                         {{$game->team_1->stadium}}
                                     </p>
                                 </td>
+                                <td class="border-border-b-4 border-gray-200 text-sm ">
+                                    {{-- call to EditGame component --}}
+                                    @livewire('edit-game', ['game' => $game], key($game->id))
+                                    
+                                </td>
                             </tr>
-                        
+                            
                         @endforeach
                     </tbody>
                 </table>
             </x-table>
 
         @else
-
+            {{-- no games found --}}
             <div class="px-12">
                 <x-alert-message type="danger">
                     <x-slot name="title">
@@ -193,7 +199,12 @@
             </div>
 
         @endif
-
+        
+        @if($games->hasPages())
+            <div class="pl-4">
+                {{$games->links()}}
+            </div>
+        @endif
     </div>
 
 </div>

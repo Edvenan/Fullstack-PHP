@@ -16,8 +16,17 @@ class Team extends Model
      */
     protected $fillable = [ 
         'name',
+        'foundation_year',
         'stadium',
-        'foundation_year'
+        'emblem_photo',
+        'points',
+        'num_games',
+        'won',
+        'draw',
+        'lost',
+        'goals',
+        'against',
+        'average'
     ];
 
     /**

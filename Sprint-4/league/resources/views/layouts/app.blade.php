@@ -19,6 +19,8 @@
 
         <!-- Scripts to incorporate Alpine and Tailwindcss -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- scripts SweetAlert2 --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <!-- Styles -->
         <!-- to incorporate Livewire styles -->
@@ -53,5 +55,15 @@
         <!-- to incorporate Livewire scripts -->
         @livewireScripts
         
+        {{-- SweetAlert2 script  --}}
+        <script>
+            Livewire.on('alert', function(msg_1, msg_2){
+                Swal.fire(
+                    msg_1,
+                    msg_2,
+                    'success'
+                )
+            })
+        </script>
     </body>
 </html>
