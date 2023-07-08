@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Game;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +22,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(TeamSeeder::class);
+
+        Game::factory()->count(20)->create();
+
+        $this->call(UserSeeder::class);
     }
 }

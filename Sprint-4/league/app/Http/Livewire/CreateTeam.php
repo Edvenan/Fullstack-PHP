@@ -15,11 +15,14 @@ class CreateTeam extends Component
     // vars to create team
     public $name, $foundation_year, $stadium, $emblem_photo;
 
+    /**
+     * Validation rules
+     */
     protected $rules = [
         'name' => 'unique:\App\Models\Team,name|required|string|min:2', // Add the validation rule here
         'foundation_year' => 'required|integer|min:1850|max:2023',
         'stadium' => 'unique:\App\Models\Team,stadium|required|string',
-        'emblem_photo' => 'active_url',
+        'emblem_photo' => 'nullable|url',
     ];
 
     public function updated($propertyName)
@@ -34,11 +37,12 @@ class CreateTeam extends Component
 
     public function save()
     {
+        
+        $this->validate();
+
         if($this->emblem_photo=="") {
             $this->emblem_photo = "https://upload.wikimedia.org/wikipedia/commons/0/0a/Football_Image_Logo.png";
         }
-
-        $this->validate();
 
         Team::create([
             'name' => $this->name,

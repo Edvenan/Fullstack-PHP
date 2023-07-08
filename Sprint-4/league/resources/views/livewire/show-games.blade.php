@@ -21,164 +21,186 @@
                     <thead> {{-- Table header --}}
                         <tr class="border-gray-400">
                             <th {{-- Table header: Team 1--}}
-                                class= "cursor-pointer py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
+                                class= "cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
                                 wire:click="order('team_1.name')">
-                                Local
-
-                                {{-- Sort icons --}}
-                                @if ($sort == 'team_1.name')
-                                    @if (! $direction)
-                                        <i class="fas fa-sort-alpha-up-alt float-right "></i>
-                                    @else
-                                        <i class="fas fa-sort-alpha-down-alt float-right "></i>
-                                    @endif
-                                @else
-                                    <i class="fas fa-sort float-right "></i>
-                                @endif
-
+                                <div class="block  sm:flex md:block lg:flex">
+                                    Local
+                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                        {{-- Sort icons --}}
+                                        @if ($sort == 'team_1.name')
+                                            @if (! $direction)
+                                                <i class="fas fa-sort-alpha-up-alt"></i>
+                                            @else
+                                                <i class="fas fa-sort-alpha-down-alt"></i>
+                                            @endif
+                                        @else
+                                            <i class="fas fa-sort"></i>
+                                        @endif
+                                    </div>
+                                </div>
                             </th>
                             <th {{-- Table header: Score --}}
                                 class="py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider">
-                                <p></p>
+                                
                             </th>   
                             <th {{-- Table header: Team 2 --}}
-                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
+                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
                                 wire:click="order('team_2.name')">
-                                Visitor
-
-                                {{-- Sort icons --}}
-                                @if ($sort == 'team_2.name')
-                                    @if (! $direction)
-                                        <i class="fas fa-sort-alpha-up-alt float-right "></i>
-                                    @else
-                                        <i class="fas fa-sort-alpha-down-alt float-right "></i>
-                                    @endif
-                                @else
-                                    <i class="fas fa-sort float-right "></i>
-                                @endif
-
+                                <div class="block sm:flex md:block lg:flex">
+                                    Visitor
+                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                        {{-- Sort icons --}}
+                                        @if ($sort == 'team_2.name')
+                                            @if (! $direction)
+                                                <i class="fas fa-sort-alpha-up-alt"></i>
+                                            @else
+                                                <i class="fas fa-sort-alpha-down-alt"></i>
+                                            @endif
+                                        @else
+                                            <i class="fas fa-sort"></i>
+                                        @endif
+                                    </div>
+                                </div>
                             </th>
                             <th {{-- Table header: Date --}}
-                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
+                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
                                 wire:click="order('date')">
-                                Date
-                                
-                                {{-- Sort icons --}}
-                                @if ($sort == 'date')
-                                    @if (! $direction)
-                                        <i class="fas fa-sort-alpha-up-alt float-right "></i>
-                                    @else
-                                        <i class="fas fa-sort-alpha-down-alt float-right "></i>
-                                    @endif
-                                @else
-                                    <i class="fas fa-sort float-right "></i>
-                                @endif
-
+                                <div class="block sm:flex md:block lg:flex">
+                                    Date
+                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                        {{-- Sort icons --}}
+                                        @if ($sort == 'date')
+                                            @if (! $direction)
+                                                <i class="fas fa-sort-alpha-up-alt"></i>
+                                            @else
+                                                <i class="fas fa-sort-alpha-down-alt"></i>
+                                            @endif
+                                        @else
+                                            <i class="fas fa-sort"></i>
+                                        @endif
+                                    </div>
+                                </div>
                             </th>
                             <th {{-- Table header: Time --}}
-                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell"
+                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden sm:table-cell"
                                 wire:click="order('time')">
-                                Time
-                                
-                                {{-- Sort icons --}}
-                                @if ($sort == 'time')
-                                    @if (! $direction )
-                                        <i class="fas fa-sort-alpha-up-alt float-right "></i>
-                                    @else
-                                        <i class="fas fa-sort-alpha-down-alt float-right "></i>
-                                    @endif
-                                @else
-                                    <i class="fas fa-sort float-right "></i>
-                                @endif
-
+                                <div class="block sm:flex md:block lg:flex">
+                                    Time
+                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                        {{-- Sort icons --}}
+                                        @if ($sort == 'time')
+                                            @if (! $direction )
+                                                <i class="fas fa-sort-alpha-up-alt"></i>
+                                            @else
+                                                <i class="fas fa-sort-alpha-down-alt"></i>
+                                            @endif
+                                        @else
+                                            <i class="fas fa-sort"></i>
+                                        @endif
+                                    </div>
+                                </div>
                             </th>
                             <th {{-- Table header: Stadium --}}
-                                class="cursor-pointer px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell"
+                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden sm:table-cell"
                                 wire:click="order('team_1.stadium')">
-                                Stadium
-
-                                {{-- Sort icons --}}
-                                @if ($sort == 'team_1.stadium')
-                                    @if (! $direction)
-                                        <i class="fas fa-sort-alpha-up-alt float-right "></i>
-                                    @else
-                                        <i class="fas fa-sort-alpha-down-alt float-right "></i>
-                                    @endif
-                                @else
-                                    <i class="fas fa-sort float-right "></i>
-                                @endif
-
+                                <div class="block sm:flex md:block lg:flex">
+                                    Stadium
+                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                        {{-- Sort icons --}}
+                                        @if ($sort == 'team_1.stadium')
+                                            @if (! $direction)
+                                                <i class="fas fa-sort-alpha-up-alt"></i>
+                                            @else
+                                                <i class="fas fa-sort-alpha-down-alt"></i>
+                                            @endif
+                                        @else
+                                            <i class="fas fa-sort"></i>
+                                        @endif
+                                    </div>
+                                </div>
                             </th>
                             <th {{-- Table header: actions --}}
-                            class="px-5 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider ">
+                            class="px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider ">
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach ($games as $game)
+                    <tbody> {{-- Table body --}}
+                        @foreach ($games as $item)
 
                             <tr class="bg-white ">
-                                <td class="px-5 py-5 border-border-b-4 border-gray-200  text-sm">
-                                    <div class="flex items-center">
-
-                                        <div class="flex-1 w-28 mr-3">
-                                            <p class="text-right text-gray-900 whitespace-no-wrap">
-                                                {{$game->team_1->name}}
-                                            </p>
+                                {{-- Table row column: Team 1 --}}
+                                <td class=" px-3 py-5 border-b border-gray-200  text-sm">
+                                    <div class="flex flex-col items-center text-center sm:flex-row-reverse ">
+                                        <div class="order-2 sm:order-2 sm:text-right text-gray-900 whitespace-no-wrap">
+                                                {{$item->team_1->name}}
                                         </div>
-                                        <div class="flex-shrink-0 w-10 h-10">
-                                            <img class="w-full h-full "
-                                                
-                                                src="{{$game->team_1->emblem_photo}}"
+
+                                        <div class="order-1 sm:order-1 text-gray-900 h-10 w-full sm:w-10 ">
+                                            <img class=" mx-auto h-full sm:float-right"
+                                                src="{{$item->team_1->emblem_photo}}"
                                                 alt="" />
                                         </div>
                                     </div>
+
                                 </td>
-                                <td class="w-16 py-5 border-border-b-4 border-gray-200  text-sm">
+                                {{-- Table row column: Score --}}
+                                <td class="w-16 py-5 border-b border-gray-200  text-sm">
                                     <div class="ml-3">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            {{$game->score_team_1}}
+                                            {{$item->score_team_1}}
                                             -
-                                            {{$game->score_team_2}}
+                                            {{$item->score_team_2}}
                                         </p>
                                     </div>
                                 </td>
-                                <td class="px-5 py-5 border-border-b-4 border-gray-200  text-sm">
-                                    <div class="flex items-center">
+                                {{-- Table row column: Team 2 --}}
+                                <td class="px-3 py-5 border-b border-gray-200  text-sm">
+
+                                    <div class="flex flex-col items-center text-center sm:flex-row ">
                                         
-                                        <div class="flex-shrink-0 w-10 h-10">
-                                            <img class="w-full h-full "
+                                        <div class="order-1 sm:no-order text-gray-900 h-10 w-full sm:w-10 ">
+                                            <img class="mx-auto h-full sm:float-left "
                                                 
-                                                src="{{$game->team_2->emblem_photo}}"
+                                                src="{{$item->team_2->emblem_photo}}"
                                                 alt="" />
                                         </div>
-                                        <div class="flex-1 w-28 ml-3">
-                                            <p class="text-left text-gray-900 whitespace-no-wrap">
-                                                {{$game->team_2->name}}
-                                            </p>
+                                        <div class="order-2 sm:no-order sm:text-left text-gray-900 whitespace-no-wrap">
+                                                {{$item->team_2->name}}
                                         </div>
 
                                     </div>
                                 </td>
-                                <td class="px-5 py-5 border-border-b-4 border-gray-200  text-sm">
+                                {{-- Table row column: Date --}}
+                                <td class="px-3 py-5 border-b border-gray-200  text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{date('j F, Y', strtotime($game->date))}}
+                                        {{date('j F, Y', strtotime($item->date))}}
                                     </p>
                                 </td>
-                                <td class="px-5 py-5 border-border-b-4 border-gray-200  text-sm hidden lg:table-cell">
+                                {{-- Table row column: Time --}}
+                                <td class="px-3 py-5 border-b border-gray-200  text-sm hidden sm:table-cell">
                                     <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{\Carbon\Carbon::createFromFormat('H:i:s',$game->time)->format('H:i')}}
+                                        {{\Carbon\Carbon::createFromFormat('H:i:s',$item->time)->format('H:i')}}
                                     </p>
                                 </td>
-                                <td class="px-5 py-5 border-border-b-4 border-gray-200  text-sm hidden lg:table-cell">
+                                {{-- Table row column: Stadium --}}
+                                <td class="px-3 py-5 border-b border-gray-200  text-sm hidden sm:table-cell">
                                     <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{$game->team_1->stadium}}
+                                        {{$item->team_1->stadium}}
                                     </p>
                                 </td>
-                                <td class="border-border-b-4 border-gray-200 text-sm ">
+                                {{-- Table row column: Action Buttons --}}
+                                <td class="border-b border-gray-200 text-sm ">
                                     {{-- call to EditGame component --}}
-                                    @livewire('edit-game', ['game' => $game], key($game->id))
-                                    
+                                    {{-- @livewire('edit-game', ['game' => $game], key($game->id)) --}}
+                                    <div class="flex flex-col pl-1 pr-2 mx-auto space-y-3 items-center sm:flex-row sm:px-1 sm:py-4 sm:space-x-2 sm:space-y-0">
+                                        <a class="btn btn-blue" wire:click="edit({{$item}})">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                
+                                        <a class="btn btn-red" wire:click="destroy({{$item}})">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                             
@@ -200,11 +222,97 @@
 
         @endif
         
+        {{-- Pagination --}}
         @if($games->hasPages())
-            <div class="pl-4">
+            <div class="sm:pl-4 pb-4">
                 {{$games->links()}}
             </div>
         @endif
     </div>
+
+    {{-- Edit modal --}}
+    <x-dialog-modal wire:model='open_edit'>
+
+        <x-slot name='title'>
+            Edit Game:
+            @if ($game->team_1_id)
+                <span class="ml-2 sm:ml-12 text-sm text-blue-500">{{$game->team_1->name}} - {{$game->team_2->name}}</span>
+            @endif
+        </x-slot>
+
+        <x-slot name='content'>
+
+            <div class="flex flex-col items-center      sm:items-stretch">
+                {{-- teams selection --}}
+                <div class="flex flex-row mb-4      sm:flex-col">
+
+                    {{-- Labels --}}
+                    <div class="flex flex-col text-right justify-between py-2      sm:flex-row sm:px-16">
+                        <x-label for='game.team_1_id' value="Local Team" />
+                        <x-label class="text-right" value="Score" />
+                        <x-label for='game.team_2_id' value="Visitor Team" />
+                    </div>
+                    <div class="flex flex-col justify-between ml-4      sm:flex-row sm:ml-0 ">
+                        {{-- team & score 1  --}}
+                        <div class="flex flex-col space-y-1       sm:flex-row sm:space-y-0 sm:space-x-8">
+                            <select class="w-52 text-sm rounded-lg border-gray-300 shadow-lg" id='game.team_1_id' wire:model='game.team_1_id'>
+                                {{-- <option value="{{$game->team_1_id}}">{{$game->team_1->name}}</option> --}}
+                                @foreach($locals as $local)
+                                    <option value="{{$local->id}}" {{ $game->team_1_id == $local->id ? 'selected' : '' }}>{{$local->name}}</option>
+                                @endforeach
+                            </select>
+                            <x-input-error class="mt-1 text-xs" for='localId'/>
+                            <div class="flex flex-col items-center    sm:flex-row sm:space-x-1.5">
+                                <x-input class="w-16 mx-auto sm:px-1 text-center text-sm" id="game.score_team_1" type="number" min="0" onkeydown="return false" wire:model="game.score_team_1"/>
+                                <x-input-error class="mt-1 text-xs" for='game.score_team_1'/>
+                                <span class="text-center">-</span>
+                            </div>
+                        </div>
+                    
+                        {{-- team & score 2  --}}
+                        <div class="flex flex-col space-y-1      sm:flex-row sm:space-y-0 sm:space-x-8">
+                            <x-input class="w-16 mx-auto sm:px-1 text-center text-sm" id="game.score_team_2" type="number" min="0" onkeydown="return false" wire:model="game.score_team_2"/>
+                            <x-input-error class="mt-1 text-xs" for='game.score_team_2'/>
+                            <select class="w-52 text-sm rounded-lg border-gray-300 shadow-lg" id='game.team_2_id' wire:model='game.team_2_id'>
+                                @foreach($visitors as $visitor)
+                                    <option value="{{$visitor->id}}" {{ $game->team_2_id == $visitor->id ? 'selected' : '' }}>{{$visitor->name}}</option>
+                                @endforeach
+                            </select>
+                            <x-input-error class="mt-1 text-xs" for='game.team_2_id'/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex space-x-4 mb-4 text-center sm:justify-between sm:w-full">
+                    {{-- Game Date --}}
+                    <div class=" ml-4      sm:ml-0">
+                        <x-label for='game.date' value="Game Date" />
+                        <x-input class=" text-sm" id="game.date" type="date" wire:model="game.date"/>
+                        <x-input-error class="mt-1 text-xs" for='game.date'/>
+                    </div>
+                    {{-- Game Time --}}
+                    <div class=" ">
+                        <x-label for='game.time' value="Game Time" />
+                        <x-input class=" text-sm" id="game.time" type="time"  wire:model="game.time"/>
+                        <x-input-error class="mt-1 text-xs" for='game.time'/>
+                    </div>
+                </div>
+            </div>
+        </x-slot>
+
+        <x-slot name='footer'>
+            <x-secondary-button wire:click="$set('open_edit', false)">
+                Cancel
+            </x-secondary-button>
+
+            <x-danger-button class="ml-4" wire:click="update" wire:loading.remove wire:target="update">
+                Update Game
+            </x-danger-button>
+
+            <x-danger-button class="ml-4" wire:loading wire:target="update">Updating...</x-danger-button>
+
+        </x-slot>
+
+    </x-dialog-modal>
 
 </div>

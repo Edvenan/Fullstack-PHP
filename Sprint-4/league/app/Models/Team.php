@@ -52,7 +52,7 @@ class Team extends Model
      */
     // 
     public function position(){
-        $teams = Team::orderBy('points', 'desc')->orderBy('name', 'asc')->get();
+        $teams = Team::orderBy('points', 'desc')->orderBy('num_games', 'asc')->orderBy('average', 'desc')->get();
         $position = 1;
         foreach ($teams as $team) {
             if ($this->id == $team->id){

@@ -22,8 +22,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
-                        <x-application-mark class="block h-12 mb-3 w-auto" />
+                    <a href="{{ route('home') }}"  >
+                        <x-application-mark class="block h-8 w-auto transition-transform transform hover:rotate-180    hoover:scale-x-[-1]" />
                     </a>
                 </div>
 

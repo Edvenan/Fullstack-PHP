@@ -3,6 +3,9 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Database\QueryException;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -26,5 +29,17 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $exception)
+    {
+       if ($exception instanceof QueryException){
+            /* return response()->view('errors.database-connection', [], Response::HTTP_INTERNAL_SERVER_ERROR); */
+            return response()->view('errors.database-connection', ['exception'=>$exception, 'request'=>$request], Response::HTTP_INTERNAL_SERVER_ERROR);
+        } 
+        /* elseif ($exception){
+            return response()->view('errors.generic', [], Response::HTTP_INTERNAL_SERVER_ERROR);
+        } */
+        return parent::render($request, $exception);
     }
 }
