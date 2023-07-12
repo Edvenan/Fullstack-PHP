@@ -3,7 +3,35 @@
 ## Introduction
 This web app allows the user to follow a sports league (ranking, teams, calendar and games) as well as manage its key elements such as the teams and games.
 
-The app has been developed using Laravel - PHP framework and following a MVC design pattern.
+## Arquitecture
+The app has been developed using Laravel - PHP framework and following a MVC design pattern. \
+The CRUD functions have been architectured as follows:
+
+**Models:**
+- User: model to handle the users
+- Team: model to handle the Teams
+- Games: model to handle the Games
+
+**Controllers:**
+
+In order to provide page reactivity, **livewire components** have been used to control the application, acting as controllers.
+- ShowRanking
+- ShowCalendar
+- ShowGames (livewire component that includes Read, Edit and Delete for each register - no separate components have been developed in otder to gain page load and code length efficiency)
+- CreateGame (separate livewire component for Create)
+- ShowTeams (livewire component that includes Read, Edit and Delete for each register - no separate components have been developed in otder to gain page load and code length efficiency)
+- CreateTeam (separate livewire component for Create)
+
+**Views:**
+- Show-Ranking
+- Show-Calendar
+- Show-Games
+- Create-Game
+- Show-Teams 
+- Create-Team 
+- 404 (error view)
+- Database-Connection (error view)
+
 
 ## Functionality
 
