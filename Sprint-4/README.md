@@ -3,10 +3,11 @@
 ## Introduction
 This web app allows the user to follow a sports league (ranking, teams, calendar and games) as well as manage its key elements such as the teams and games.
 
-This app supports 2 type of users (registered and unregistered) and the functionality availbale will depend on the type of user.
-
+The app has been developed using Laravel - PHP framework and following a MVC design pattern.
 
 ## Functionality
+
+This app supports 2 type of users (registered and unregistered) and the functionality availbale will depend on the type of user.
 
 **Unregistered** users will be able to see:
 - the league **ranking** and **teams statistics**
