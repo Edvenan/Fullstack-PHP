@@ -41,7 +41,8 @@ class CreateTeam extends Component
         $this->validate();
 
         if($this->emblem_photo=="") {
-            $this->emblem_photo = "https://upload.wikimedia.org/wikipedia/commons/0/0a/Football_Image_Logo.png";
+            /* $this->emblem_photo = "https://upload.wikimedia.org/wikipedia/commons/0/0a/Football_Image_Logo.png"; */
+            $this->emblem_photo = "https://www.multilac.com/uploads/projects/noimage.png";
         }
 
         Team::create([

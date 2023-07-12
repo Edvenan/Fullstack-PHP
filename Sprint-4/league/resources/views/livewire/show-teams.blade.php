@@ -1,4 +1,4 @@
-<div>
+<div wire:init="loadTeams">
 
     {{-- Show All header --}}
     <x-slot name="header">
@@ -12,83 +12,92 @@
 
             {{-- search bar & Create Team button --}}
             <div class=" py-4 flex items-center">
-                <x-input class="flex-1 mr-4" placeholder="Search teams by name, year, stadium..." type="text" wire:model="search">
+                <x-input class="flex-1 mr-4  cursor-pointer" placeholder="Search teams by name, year, stadium..." type="text" wire:model="search">
                 </x-input>
                 @livewire('create-team')
             </div>
 
-            @if ($teams->count())
-                {{-- card grid with teams found --}}
-                <x-card-list-section>
-                    
-                    @foreach ($teams as $item)
-                        <!-- Card Item -->
-                        <!-- Clickable Area -->
-                        <div class="border my-2 rounded shadow-lg shadow-gray-200 dark:shadow-gray-900 bg-white dark:bg-gray-800 
-                                duration-300 hover:-translate-y-2 hover:border-red-600 hover:border-4 cursor-pointer " 
-                                wire:click="show({{$item}})">
+            @if($teams=='loading')
+                <div aria-label="Loading..." role="status" class="my-8 flex items-center justify-center space-x-2">
+                    <svg class="h-6 w-6 animate-spin stroke-gray-500" viewBox="0 0 256 256">
+                        <line x1="128" y1="32" x2="128" y2="64" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line>
+                        <line x1="195.9" y1="60.1" x2="173.3" y2="82.7" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="224" y1="128" x2="192" y2="128" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="195.9" y1="195.9" x2="173.3" y2="173.3" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="128" y1="224" x2="128" y2="192" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="60.1" y1="195.9" x2="82.7" y2="173.3" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="32" y1="128" x2="64" y2="128" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="60.1" y1="60.1" x2="82.7" y2="82.7" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line>
+                    </svg>
+                    <span class="text-xs font-medium text-gray-500">Loading...</span>
+                </div>
+            @else
+                @if ($teams->count())
+                    {{-- card grid with teams found --}}
+                    <x-card-list-section>
+                        
+                        @foreach ($teams as $item)
+                            <!-- Card Item -->
+                            <!-- Clickable Area -->
+                            <div class="border my-2 rounded shadow-lg shadow-gray-200 dark:shadow-gray-900 bg-white dark:bg-gray-800 
+                                    duration-300 hover:-translate-y-2 hover:border-red-600 hover:border-4 cursor-pointer " 
+                                    wire:click="show({{$item}})">
 
-                                <figure class="p-4 pb-0 flex flex-col justify-between h-full">
-                                    <!-- Image -->
-                                    <img src="{{$item->emblem_photo}}" class="rounded-t m-auto" />
-                                       
+                                    <figure class="p-4 pb-0 flex flex-col justify-between h-full">
+                                        <!-- Image -->
+                                        <img src="{{$item->emblem_photo}}" class="rounded-t m-auto" />
+                                        
 
-                                    <figcaption class="py-4 mb-0">
-                                        <div class="mb-4">
-                                            <!-- Name -->
-                                            <p
-                                                class="text-center h-16 text-sm sm:text-lg mb-4 font-bold leading-relaxed text-gray-800 dark:text-gray-300 overflow-" >
-                                                {{$item->name}}
-                                            </p>
-                                            {{-- <!-- Foundation Year -->
-                                            <p class="float-right">
-                                                {{$item->foundation_year}}
-                                            </p>
-                                            <small
-                                                class="leading-5 mt-4 text-gray-500 dark:text-gray-400"
-                                                >
-                                                Foundation Year:
-                                            </small>
-                                            <!-- Stadium -->
-                                            <p>
+                                        <figcaption class="py-4 mb-0">
+                                            <div class="mb-4">
+                                                <!-- Name -->
+                                                <p
+                                                    class="text-center h-16 text-sm sm:text-lg mb-4 font-bold leading-relaxed text-gray-800 dark:text-gray-300 overflow-" >
+                                                    {{$item->name}}
+                                                </p>
+                                                {{-- <!-- Foundation Year -->
+                                                <p class="float-right">
+                                                    {{$item->foundation_year}}
+                                                </p>
                                                 <small
                                                     class="leading-5 mt-4 text-gray-500 dark:text-gray-400"
                                                     >
-                                                    Stadium:
-                                                </small><br>
-                                                <small
-                                                    class=" text-gray-500 dark:text-gray-400 float-right"
-                                                    >
-                                                    {{$item->stadium}}
+                                                    Foundation Year:
                                                 </small>
-                                            </p><br>
-                                            <p class="float-right font-bold">
-                                                    {{$item->position()}}
-                                            </p>
-                                            <small class="leading-5 float-left ">
-                                                Position:
-                                            </small>    --}}     
-                                        </div>
-                                    </figcaption>
-                                    
-                                </figure>
-                        </div>
-                    @endforeach
+                                                <!-- Stadium -->
+                                                <p>
+                                                    <small
+                                                        class="leading-5 mt-4 text-gray-500 dark:text-gray-400"
+                                                        >
+                                                        Stadium:
+                                                    </small><br>
+                                                    <small
+                                                        class=" text-gray-500 dark:text-gray-400 float-right"
+                                                        >
+                                                        {{$item->stadium}}
+                                                    </small>
+                                                </p><br>
+                                                <p class="float-right font-bold">
+                                                        {{$item->position()}}
+                                                </p>
+                                                <small class="leading-5 float-left ">
+                                                    Position:
+                                                </small>    --}}     
+                                            </div>
+                                        </figcaption>
+                                        
+                                    </figure>
+                            </div>
+                        @endforeach
 
-                </x-card-list-section>
-    
-            @else
-                {{-- no teams found --}}
-                <div class="px-12 py-4">
-                    <x-alert-message type="danger">
-                        <x-slot name="title">
-                            The IT Academy League:
-                        </x-slot> 
-                            No teams found!
-                    </x-alert-message>
-                </div>
-            @endif 
-
+                    </x-card-list-section>
+        
+                @else
+                    {{-- no teams found --}}
+                    <div class="px-12 py-4">
+                        <x-alert-message type="danger">
+                            <x-slot name="title">
+                                The IT Academy League:
+                            </x-slot> 
+                                No teams found!
+                        </x-alert-message>
+                    </div>
+                @endif 
+            @endif
 
     </div>
 
@@ -425,7 +434,7 @@
                 <x-danger-button class="m-auto" wire:click="$set('open_show', false)">
                     Close
                 </x-danger-button>
-                <a class="btn btn-red ml-auto" wire:click="destroy({{$team}})">
+                <a class="btn btn-red ml-auto" wire:click="$emit('alert_delete', 'show-teams', {{$team}})">
                     <i class="fa-solid fa-trash "></i>
                 </a>
             </div>

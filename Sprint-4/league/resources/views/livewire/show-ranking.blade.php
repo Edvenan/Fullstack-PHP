@@ -2,301 +2,323 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-center text-xl text-gray-800 leading-tight ">
-            {{ __('The IT Academy League Ranking') }}
+            {{ __('League Ranking') }}
         </h2>
     </x-slot>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
 
-        {{-- Ranking --}}
-        @if ($teams->count())
-            <x-table>
-                <table class="min-w-full leading-normal">
-                    <thead> {{-- Table header --}}
-                        <tr>
-                            <th {{-- Table header: Rank --}}
-                                class="  cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider "
-                                wire:click="order('position')">
-                                <div class="block sm:flex md:block lg:flex">
-                                    Rank
-                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
-                                        {{-- Sort icons --}}
-                                        @if ($sort == 'position')
-                                            @if ($direction == 'asc')
-                                                <i class=" fas fa-sort-alpha-up-alt  "></i>
-                                            @else
-                                                <i class=" fas fa-sort-alpha-down-alt  "></i>
-                                            @endif
-                                        @else
-                                            <i class="fas fa-sort "></i>
-                                        @endif
-                                    </div>
-                                </div>
-                            </th>
-                            <th {{-- Table header: Team --}}
-                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
-                                wire:click="order('name')">
-                                <div class="block sm:flex md:block lg:flex">
-                                    Team
-                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
-                                        {{-- Sort icons --}}
-                                        @if ($sort == 'name')
-                                            @if ($direction == 'asc')
-                                                <i class="fas fa-sort-alpha-up-alt "></i>
-                                            @else
-                                                <i class="fas fa-sort-alpha-down-alt "></i>
-                                            @endif
-                                        @else
-                                            <i class="fas fa-sort "></i>
-                                        @endif
-                                    </div>
-                                </div>
-                            </th>
-                            <th {{-- Table header: Num Games --}}
-                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
-                                wire:click="order('num_games')">
-                                <div class="block sm:flex md:block lg:flex">
-                                    Matches
-                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
-                                        {{-- Sort icons --}}
-                                        @if ($sort == 'num_games')
-                                            @if ($direction == 'asc')
-                                                <i class="fas fa-sort-alpha-up-alt "></i>
-                                            @else
-                                                <i class="fas fa-sort-alpha-down-alt "></i>
-                                            @endif
-                                        @else
-                                            <i class="fas fa-sort "></i>
-                                        @endif
-                                    </div>
-                                </div>
-                            </th>
-                            <th {{-- Table header: Games Won --}}
-                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
-                                wire:click="order('won')">
-                                <div class="block sm:flex md:block lg:flex">
-                                    Won
-                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
-                                        {{-- Sort icons --}}
-                                        @if ($sort == 'won')
-                                            @if ($direction == 'asc')
-                                                <i class="fas fa-sort-alpha-up-alt "></i>
-                                            @else
-                                                <i class="fas fa-sort-alpha-down-alt "></i>
-                                            @endif
-                                        @else
-                                            <i class="fas fa-sort "></i>
-                                        @endif
-                                    </div>
-                                </div>
-                            </th>
-                            <th {{-- Table header: Games Draw --}}
-                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
-                                wire:click="order('draw')">
-                                <div class="block sm:flex md:block lg:flex">
-                                    Draw
-                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
-                                        {{-- Sort icons --}}
-                                        @if ($sort == 'draw')
-                                            @if ($direction == 'asc')
-                                                <i class="fas fa-sort-alpha-up-alt "></i>
-                                            @else
-                                                <i class="fas fa-sort-alpha-down-alt "></i>
-                                            @endif
-                                        @else
-                                            <i class="fas fa-sort "></i>
-                                        @endif
-                                    </div>
-                                </div>
-                            </th>
-                            <th {{-- Table header: Games Lost --}}
-                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
-                                wire:click="order('lost')">
-                                <div class="block sm:flex md:block lg:flex">
-                                    Lost
-                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
-                                        {{-- Sort icons --}}
-                                        @if ($sort == 'lost')
-                                            @if ($direction == 'asc')
-                                                <i class="fas fa-sort-alpha-up-alt "></i>
-                                            @else
-                                                <i class="fas fa-sort-alpha-down-alt "></i>
-                                            @endif
-                                        @else
-                                            <i class="fas fa-sort "></i>
-                                        @endif
-                                    </div>
-                                </div>
-                            </th>
-                            <th {{-- Table header: Goals --}}
-                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
-                                wire:click="order('goals')">
-                                <div class="block sm:flex md:block lg:flex">
-                                    Goals
-                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
-                                        {{-- Sort icons --}}
-                                        @if ($sort == 'goals')
-                                            @if ($direction == 'asc')
-                                                <i class="fas fa-sort-alpha-up-alt "></i>
-                                            @else
-                                                <i class="fas fa-sort-alpha-down-alt "></i>
-                                            @endif
-                                        @else
-                                            <i class="fas fa-sort "></i>
-                                        @endif
-                                    </div>
-                                </div>
-                            </th>
-                            <th {{-- Table header: Goals Against --}}
-                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
-                                wire:click="order('against')">
-                                <div class="block sm:flex md:block lg:flex">
-                                    Against
-                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
-                                        {{-- Sort icons --}}
-                                        @if ($sort == 'against')
-                                            @if ($direction == 'asc')
-                                                <i class="fas fa-sort-alpha-up-alt "></i>
-                                            @else
-                                                <i class="fas fa-sort-alpha-down-alt "></i>
-                                            @endif
-                                        @else
-                                            <i class="fas fa-sort "></i>
-                                        @endif
-                                    </div>
-                                </div>
-                            </th>
-                            <th {{-- Table header: Goal Average --}}
-                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
-                                wire:click="order('average')">
-                                <div class="block sm:flex md:block lg:flex">
-                                    +/-
-                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
-                                        {{-- Sort icons --}}
-                                        @if ($sort == 'average')
-                                            @if ($direction == 'asc')
-                                                <i class="fas fa-sort-alpha-up-alt "></i>
-                                            @else
-                                                <i class="fas fa-sort-alpha-down-alt "></i>
-                                            @endif
-                                        @else
-                                            <i class="fas fa-sort "></i>
-                                        @endif
-                                    </div>
-                                </div>
-                            </th>
-                            <th {{-- Table header: Points --}}
-                                class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
-                                wire:click="order('points')">
-                                <div class="block sm:flex md:block lg:flex">
-                                    Pts.
-                                    <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
-                                        {{-- Sort icons --}}
-                                        @if ($sort == 'points')
-                                            @if ($direction == 'asc')
-                                                <i class="fas fa-sort-alpha-up-alt "></i>
-                                            @else
-                                                <i class="fas fa-sort-alpha-down-alt "></i>
-                                            @endif
-                                        @else
-                                            <i class="fas fa-sort "></i>
-                                        @endif
-                                    </div>
-                                </div>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody> {{-- Table body --}}
-                        @foreach ($teams as $item)
-
-                            <tr class=" border-b border-gray-200 bg-white text-sm duration-300  hover:scale-95 hover:bg-gray-200 cursor-pointer"  wire:click="show({{$item}})">
-                                <td class="px-3 py-5 text-center">
-                                    <p class="text-gray-900  whitespace-no-wrap">
-                                        {{$item->position()}}
-                                    </p>
-                                </td>
-                                <td class="px-3 py-5 ">
-                                    <div class="block sm:flex md:block lg:flex items-center">
-                                        <div class="  h-10 w-full sm:w-10 md:w-full lg:w-10">
-                                            <img class="mx-auto sm:flex-shrink-0 md:mx-auto lg:flex-shrink-0 h-full "
-                                                
-                                                src="{{$item->emblem_photo}}"
-                                                alt="" />
-                                        </div>
-                                        <div class="sm:ml-3 md:ml-0 lg:ml-3">
-                                            <p class="text-center sm:text-left md:text-center lg:text-left text-gray-900 whitespace-no-wrap">
-                                                {{$item->name}}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-3 py-5 ">
-                                    <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{$item->num_games}}
-                                    </p>
-                                </td>
-                                <td class="px-3 py-5  hidden md:table-cell">
-                                    <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{$item->won}}
-                                    </p>
-                                </td>
-                                <td class="px-3 py-5  hidden md:table-cell">
-                                    <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{$item->draw}}
-                                    </p>
-                                </td>
-                                <td class="px-3 py-5  hidden md:table-cell">
-                                    <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{$item->lost}}
-                                    </p>
-                                </td>
-                                <td class="px-3 py-5  hidden md:table-cell">
-                                    <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{$item->goals}}
-                                    </p>
-                                </td>
-                                <td class="px-3 py-5  hidden md:table-cell">
-                                    <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{$item->against}}
-                                    </p>
-                                </td>
-                                <td class="px-3 py-5  hidden md:table-cell">
-                                    <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{$item->average}}
-                                    </p>
-                                </td>
-                                <td class="px-3 py-5 ">
-                                    <p class="text-gray-900 whitespace-no-wrap text-center">
-                                        {{$item->points}}
-                                    </p>
-                                </td>
-                            </tr>
-                        
-                        @endforeach
-                      
-                    </tbody>
-                </table>
-            </x-table>
-        @else
-            <x-alert-message type="danger">
-                <x-slot name="title">
-                    The IT Academy League:
-                </x-slot> 
-                    No teams found!
-            </x-alert-message>
-        @endif
-
-        {{-- Pagination --}}
-        @if($teams->hasPages())
-            <div class="sm:pl-4 pb-4">
-                {{$teams->links()}}
+        {{-- items selection & search bar --}}
+        <div class=" py-4 flex items-center ">
+            <div class="flex items-center ">
+                <span class="ml-2 text-xs uppercase text-gray-900">Items</span>
+                <select class="ml-2 mr-4 border-gray-300 text-md  text-gray-700 rounded-lg shadow-lg"
+                        wire:model="items">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="10000">All</option>
+                </select>
             </div>
-        @endif
+            
+            <x-input class="flex-1 cursor-pointer" placeholder="Search teams by name, year, stadium..." type="text" wire:model="search">
+            </x-input>
+        </div>
+
+        {{-- Ranking --}}
+        
+            @if ($teams->count())
+                <x-table>
+                    <table class="min-w-full leading-normal">
+                        <thead> {{-- Table header --}}
+                            <tr>
+                                <th {{-- Table header: Rank --}}
+                                    class="  cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider "
+                                    wire:click="order('position')">
+                                    <div class="block sm:flex md:block lg:flex">
+                                        Rank
+                                        <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                            {{-- Sort icons --}}
+                                            @if ($sort == 'position')
+                                                @if ($direction == 'asc')
+                                                    <i class=" fas fa-sort-alpha-up-alt  "></i>
+                                                @else
+                                                    <i class=" fas fa-sort-alpha-down-alt  "></i>
+                                                @endif
+                                            @else
+                                                <i class="fas fa-sort "></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </th>
+                                <th {{-- Table header: Team --}}
+                                    class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
+                                    wire:click="order('name')">
+                                    <div class="block sm:flex md:block lg:flex">
+                                        Team
+                                        <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                            {{-- Sort icons --}}
+                                            @if ($sort == 'name')
+                                                @if ($direction == 'asc')
+                                                    <i class="fas fa-sort-alpha-up-alt "></i>
+                                                @else
+                                                    <i class="fas fa-sort-alpha-down-alt "></i>
+                                                @endif
+                                            @else
+                                                <i class="fas fa-sort "></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </th>
+                                <th {{-- Table header: Num Games --}}
+                                    class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
+                                    wire:click="order('num_games')">
+                                    <div class="block sm:flex md:block lg:flex">
+                                        Matches
+                                        <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                            {{-- Sort icons --}}
+                                            @if ($sort == 'num_games')
+                                                @if ($direction == 'asc')
+                                                    <i class="fas fa-sort-alpha-up-alt "></i>
+                                                @else
+                                                    <i class="fas fa-sort-alpha-down-alt "></i>
+                                                @endif
+                                            @else
+                                                <i class="fas fa-sort "></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </th>
+                                <th {{-- Table header: Games Won --}}
+                                    class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
+                                    wire:click="order('won')">
+                                    <div class="block sm:flex md:block lg:flex">
+                                        Won
+                                        <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                            {{-- Sort icons --}}
+                                            @if ($sort == 'won')
+                                                @if ($direction == 'asc')
+                                                    <i class="fas fa-sort-alpha-up-alt "></i>
+                                                @else
+                                                    <i class="fas fa-sort-alpha-down-alt "></i>
+                                                @endif
+                                            @else
+                                                <i class="fas fa-sort "></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </th>
+                                <th {{-- Table header: Games Draw --}}
+                                    class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
+                                    wire:click="order('draw')">
+                                    <div class="block sm:flex md:block lg:flex">
+                                        Draw
+                                        <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                            {{-- Sort icons --}}
+                                            @if ($sort == 'draw')
+                                                @if ($direction == 'asc')
+                                                    <i class="fas fa-sort-alpha-up-alt "></i>
+                                                @else
+                                                    <i class="fas fa-sort-alpha-down-alt "></i>
+                                                @endif
+                                            @else
+                                                <i class="fas fa-sort "></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </th>
+                                <th {{-- Table header: Games Lost --}}
+                                    class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
+                                    wire:click="order('lost')">
+                                    <div class="block sm:flex md:block lg:flex">
+                                        Lost
+                                        <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                            {{-- Sort icons --}}
+                                            @if ($sort == 'lost')
+                                                @if ($direction == 'asc')
+                                                    <i class="fas fa-sort-alpha-up-alt "></i>
+                                                @else
+                                                    <i class="fas fa-sort-alpha-down-alt "></i>
+                                                @endif
+                                            @else
+                                                <i class="fas fa-sort "></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </th>
+                                <th {{-- Table header: Goals --}}
+                                    class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
+                                    wire:click="order('goals')">
+                                    <div class="block sm:flex md:block lg:flex">
+                                        Goals
+                                        <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                            {{-- Sort icons --}}
+                                            @if ($sort == 'goals')
+                                                @if ($direction == 'asc')
+                                                    <i class="fas fa-sort-alpha-up-alt "></i>
+                                                @else
+                                                    <i class="fas fa-sort-alpha-down-alt "></i>
+                                                @endif
+                                            @else
+                                                <i class="fas fa-sort "></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </th>
+                                <th {{-- Table header: Goals Against --}}
+                                    class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
+                                    wire:click="order('against')">
+                                    <div class="block sm:flex md:block lg:flex">
+                                        Against
+                                        <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                            {{-- Sort icons --}}
+                                            @if ($sort == 'against')
+                                                @if ($direction == 'asc')
+                                                    <i class="fas fa-sort-alpha-up-alt "></i>
+                                                @else
+                                                    <i class="fas fa-sort-alpha-down-alt "></i>
+                                                @endif
+                                            @else
+                                                <i class="fas fa-sort "></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </th>
+                                <th {{-- Table header: Goal Average --}}
+                                    class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell"
+                                    wire:click="order('average')">
+                                    <div class="block sm:flex md:block lg:flex">
+                                        +/-
+                                        <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                            {{-- Sort icons --}}
+                                            @if ($sort == 'average')
+                                                @if ($direction == 'asc')
+                                                    <i class="fas fa-sort-alpha-up-alt "></i>
+                                                @else
+                                                    <i class="fas fa-sort-alpha-down-alt "></i>
+                                                @endif
+                                            @else
+                                                <i class="fas fa-sort "></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </th>
+                                <th {{-- Table header: Points --}}
+                                    class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider"
+                                    wire:click="order('points')">
+                                    <div class="block sm:flex md:block lg:flex">
+                                        Pts.
+                                        <div class="mx-auto sm:mr-0 md:mx-auto lg:mr-0">
+                                            {{-- Sort icons --}}
+                                            @if ($sort == 'points')
+                                                @if ($direction == 'asc')
+                                                    <i class="fas fa-sort-alpha-up-alt "></i>
+                                                @else
+                                                    <i class="fas fa-sort-alpha-down-alt "></i>
+                                                @endif
+                                            @else
+                                                <i class="fas fa-sort "></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody> {{-- Table body --}}
+                            @foreach ($teams as $item)
+
+                                <tr class=" border-b border-gray-200 bg-white text-sm duration-300  hover:scale-95 hover:bg-gray-200 cursor-pointer"  wire:click="show({{$item}})">
+                                    <td class="px-3 py-5 text-center">
+                                        <p class="text-gray-900  whitespace-no-wrap">
+                                            {{$item->position()}}
+                                        </p>
+                                    </td>
+                                    <td class="px-3 py-5 ">
+                                        <div class="block sm:flex md:block lg:flex items-center">
+                                            <div class="  h-10 w-full sm:w-10 md:w-full lg:w-10">
+                                                <img class="mx-auto sm:flex-shrink-0 md:mx-auto lg:flex-shrink-0 h-full "
+                                                    
+                                                    src="{{$item->emblem_photo}}"
+                                                    alt="{{$item->name}}" />
+                                            </div>
+                                            <div class="sm:ml-3 md:ml-0 lg:ml-3">
+                                                <p class="text-center sm:text-left md:text-center lg:text-left text-gray-900 whitespace-no-wrap">
+                                                    {{$item->name}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-3 py-5 ">
+                                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                                            {{$item->num_games}}
+                                        </p>
+                                    </td>
+                                    <td class="px-3 py-5  hidden md:table-cell">
+                                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                                            {{$item->won}}
+                                        </p>
+                                    </td>
+                                    <td class="px-3 py-5  hidden md:table-cell">
+                                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                                            {{$item->draw}}
+                                        </p>
+                                    </td>
+                                    <td class="px-3 py-5  hidden md:table-cell">
+                                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                                            {{$item->lost}}
+                                        </p>
+                                    </td>
+                                    <td class="px-3 py-5  hidden md:table-cell">
+                                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                                            {{$item->goals}}
+                                        </p>
+                                    </td>
+                                    <td class="px-3 py-5  hidden md:table-cell">
+                                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                                            {{$item->against}}
+                                        </p>
+                                    </td>
+                                    <td class="px-3 py-5  hidden md:table-cell">
+                                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                                            {{$item->average}}
+                                        </p>
+                                    </td>
+                                    <td class="px-3 py-5 ">
+                                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                                            {{$item->points}}
+                                        </p>
+                                    </td>
+                                </tr>
+                            
+                            @endforeach
+                        
+                        </tbody>
+                    </table>
+                </x-table>
+
+                {{-- Pagination --}}
+                @if($teams->hasPages())
+                    <div class="sm:pl-4 pb-4">
+                        {{$teams->links()}}
+                    </div>
+                @endif
+
+                
+            @else
+               
+                <x-alert-message type="danger">
+                    <x-slot name="title">
+                        The IT Academy League:
+                    </x-slot> 
+                        No teams found!
+                </x-alert-message>
+            @endif
+
         
     </div>
 
     {{-- Show Modal --}}
-    <x-dialog-modal  wire:model='open_show'>
+    <x-dialog-modal x-show="open_show" wire:model='open_show'>
 
         <x-slot name='title'>
             <p class="flex justify-center text-center">Show Team</p>
@@ -553,6 +575,7 @@
                         </div>
             
                     @endif
+
 
                 </figcaption>
             </figure>

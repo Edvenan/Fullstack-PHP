@@ -21,6 +21,7 @@ class ShowTeams extends Component
     // var to open modal
     public $open_edit = false;
     public $open_show = false;
+    
 
     /**
      * Mount method to initialize vars used by view
@@ -61,17 +62,32 @@ class ShowTeams extends Component
         $this->validateOnly($propertyName, $this->rules());
     }
 
+    // var for Delayed loading
+    public $readyToLoad = false;
+
     /**
      * ShowTeams Component Render method
      */
     public function render()
     {
-        $teams =  Team::where('name', 'like', '%'.$this->search.'%')
-                        ->orWhere('stadium', 'like', '%'.$this->search.'%')
-                        ->orWhere('foundation_year', 'like', '%'.$this->search.'%')
-                        ->orderBy('name','asc')->get();
-
+        if($this->readyToLoad){
+            $teams =  Team::where('name', 'like', '%'.$this->search.'%')
+                            ->orWhere('stadium', 'like', '%'.$this->search.'%')
+                            ->orWhere('foundation_year', 'like', '%'.$this->search.'%')
+                            ->orderBy('name','asc')->get();
+        }
+        else {
+            $teams = 'loading';
+        }
         return view('livewire.show-teams', compact('teams'));
+    }
+
+    /**
+     * Delayed Loading function
+     */
+    public function loadTeams()
+    {
+        $this->readyToLoad = true;
     }
 
     /**
@@ -112,22 +128,15 @@ class ShowTeams extends Component
         $this->open_show = true;
     }
 
-    /**
-     * Destroy Team method
-     */
-    public function destroy(Team $team)
-    {
-        $this->team = $team;
-        $this->emit('alert_delete', 'show-teams');
-
-    }
 
     /**
      * Delete Destroyed Game method
      */
-    public function delete()
+    public function delete(Team $team)
     {
-        $this->update_statistics();
+        $this->team = $team;
+
+        $this->team->update_statistics();
 
         $this->team->delete();
         
@@ -147,71 +156,4 @@ class ShowTeams extends Component
         $this->open_show = true;
     }
 
-    /**
-     * Team Statistics update after
-     * teams deletion
-     */
-    public function update_statistics()
-    {
-        foreach($this->team->games() as $game) {
-
-            // determine rival's id
-            if($game->team_1_id == $this->team->id) {
-                $rival_id = $game->team_2_id;
-                $rival_score = $game->score_team_2;
-                $deleted_team_score = $game->score_team_1;
-            } else{
-                $rival_id = $game->team_1_id;
-                $rival_score = $game->score_team_1;
-                $deleted_team_score = $game->score_team_2;
-            }
-            // get rival's object
-            $rival = Team::find($rival_id);
-
-            if($game->score_team_1 && $game->score_team_2){
-                // game was played and there is a score
-                if($deleted_team_score > $rival_score){
-                    // deleted team won
-                    $rival->against -= $deleted_team_score;
-                    $rival->goals -= $rival_score;
-                    $rival->average =  $rival->goals - $rival->against;
-                    $rival->lost -= 1;
-                    $rival->won -= 0;
-                    $rival->draw -= 0;
-                    $rival->num_games -=1;
-                    $rival->points += 0;
-                }
-                elseif($deleted_team_score < $rival_score){
-                    // deleted team lost
-                    $rival->against -= $deleted_team_score;
-                    $rival->goals -= $rival_score;
-                    $rival->average =  $rival->goals - $rival->against;
-                    $rival->lost -= 0;
-                    $rival->won -= 1;
-                    $rival->draw -= 0;
-                    $rival->num_games -=1;
-                    $rival->points -= 3;
-                }
-                elseif($deleted_team_score == $rival_score){
-                    // deleted team draw
-                    $rival->against -= $deleted_team_score;
-                    $rival->goals -= $rival_score;
-                    $rival->average =  $rival->goals - $rival->against;
-                    $rival->lost -= 0;
-                    $rival->won -= 0;
-                    $rival->draw -= 1;
-                    $rival->num_games -=1;
-                    $rival->points -= 1;
-                }
-
-                $rival->save();
-
-            }
-            else{
-                // game not played yet -> just delete team
-                continue;
-            }
-        }
-
-    }
 }

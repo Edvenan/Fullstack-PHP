@@ -7,7 +7,7 @@
     <x-dialog-modal wire:model='open'>
 
         <x-slot name='title'>
-            Create new Team
+            <p class="text-center">Create New Team</p>
         </x-slot>
 
         <x-slot name='content'>

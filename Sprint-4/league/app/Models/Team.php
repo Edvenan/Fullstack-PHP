@@ -52,7 +52,14 @@ class Team extends Model
      */
     // 
     public function position(){
-        $teams = Team::orderBy('points', 'desc')->orderBy('num_games', 'asc')->orderBy('average', 'desc')->get();
+        $teams = Team::
+            orderBy('points', 'desc')
+            ->orderBy('num_games', 'asc')
+            ->orderBy('average', 'desc')
+            ->orderBy('against', 'asc')
+            ->orderBy('name', 'asc')
+            ->get();
+
         $position = 1;
         foreach ($teams as $team) {
             if ($this->id == $team->id){
@@ -63,4 +70,73 @@ class Team extends Model
         }
         return $position;
     }
+
+    /**
+     * Updates Adversary Team Statistics
+     * after team's deletion
+     */
+    public function update_statistics()
+    {
+        foreach($this->games() as $game) {
+
+            // determine rival's id
+            if($game->team_1_id == $this->id) {
+                $rival_id = $game->team_2_id;
+                $rival_score = $game->score_team_2;
+                $deleted_team_score = $game->score_team_1;
+            } else{
+                $rival_id = $game->team_1_id;
+                $rival_score = $game->score_team_1;
+                $deleted_team_score = $game->score_team_2;
+            }
+            // get rival's object
+            $rival = Team::find($rival_id);
+
+            if($game->score_team_1 && $game->score_team_2){
+                // game was played and there is a score
+                if($deleted_team_score > $rival_score){
+                    // deleted team won
+                    $rival->against -= $deleted_team_score;
+                    $rival->goals -= $rival_score;
+                    $rival->average =  $rival->goals - $rival->against;
+                    $rival->lost -= 1;
+                    $rival->won -= 0;
+                    $rival->draw -= 0;
+                    $rival->num_games -=1;
+                    $rival->points += 0;
+                }
+                elseif($deleted_team_score < $rival_score){
+                    // deleted team lost
+                    $rival->against -= $deleted_team_score;
+                    $rival->goals -= $rival_score;
+                    $rival->average =  $rival->goals - $rival->against;
+                    $rival->lost -= 0;
+                    $rival->won -= 1;
+                    $rival->draw -= 0;
+                    $rival->num_games -=1;
+                    $rival->points -= 3;
+                }
+                elseif($deleted_team_score == $rival_score){
+                    // deleted team draw
+                    $rival->against -= $deleted_team_score;
+                    $rival->goals -= $rival_score;
+                    $rival->average =  $rival->goals - $rival->against;
+                    $rival->lost -= 0;
+                    $rival->won -= 0;
+                    $rival->draw -= 1;
+                    $rival->num_games -=1;
+                    $rival->points -= 1;
+                }
+
+                $rival->save();
+
+            }
+            else{
+                // game not played yet -> just delete team
+                continue;
+            }
+        }
+
+    }
+
 }

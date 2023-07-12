@@ -31,7 +31,7 @@ class GameFactory extends Factory
         $date = $this->faker->dateTimeBetween('2023-01-01', '2025-01-01')->format('Y-m-d');
     
         // Generate a random time between 09:00 AM and 10:00 PM in 1-hour steps
-        $time = $this->faker->dateTimeBetween('09:00:00', '22:00:00')->format('H:i:s');
+        $time = $this->faker->dateTimeBetween('09:00', '22:00')->format('H:i');
 
         return [
             'team_1_id' => $team1Id,

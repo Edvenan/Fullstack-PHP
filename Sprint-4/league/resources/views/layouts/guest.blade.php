@@ -14,17 +14,25 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="min-h-screen flex flex-col  font-sans antialiased ">
             <x-banner />
     
-            <div class="min-h-screen bg-gray-100">
+            <div class="flex-grow  bg-gray-100">
     
                 <!-- Navigation menu -->
                 @livewire('navigation-menu')
 
-            <div class="font-sans text-gray-900 antialiased">
-                {{ $slot }}
+                <div class="flex-grow font-sans text-gray-900 antialiased">
+                    {{ $slot }}
+                </div>
             </div>
+
+            <!-- Page footer -->
+            <footer class="bg-white shadow-lg   mb-0 ">
+                <div class="max-w-7xl mx-auto text-xs  text-center py-3">
+                    The IT Academy League! &copy; 2023 by Eduard Vendrell
+                </div>
+            </footer>
 
     </body>
 </html>

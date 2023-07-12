@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TeamSeeder::class);
 
-        Game::factory()->count(20)->create();
+        Game::factory()->count(30)->create();
 
         $this->call(UserSeeder::class);
     }

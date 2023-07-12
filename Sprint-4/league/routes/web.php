@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\ShowCalendar;
 use App\Http\Livewire\ShowGames;
 use App\Http\Livewire\ShowRanking;
 use App\Http\Livewire\ShowTeams;
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 // Home route (before login & after login)
 Route::get('/', ShowRanking::class)->name('home');
+Route::get('/calendar', ShowCalendar::class)->name('calendar');
 
 // routes accessible only after successful login via components acting as controllers
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->get('/teams', ShowTeams::class)->name('teams');

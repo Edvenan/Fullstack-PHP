@@ -16,7 +16,10 @@
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free-6.4.0-web/css/all.min.css') }}">
 
     {{-- Favicon --}}
-    <link rel="icon" href="{{ URL::asset('champ_league-white.ico') }}" type="image/x-icon" />
+    {{-- Dark mode --}}
+    {{-- <link rel="icon" href="{{ URL::asset('champ_league-white.ico') }}" type="image/x-icon" /> --}}
+    {{-- Light mode --}}
+    <link rel="icon" href="{{ URL::asset('champ_league.ico') }}" type="image/x-icon" />
 
     <!-- Scripts to incorporate Alpine and Tailwindcss -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -29,10 +32,10 @@
 
 </head>
 
-<body class="font-sans antialiased">
+<body class="min-h-screen flex flex-col font-sans antialiased">
     <x-banner />
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="flex-grow bg-gray-100">
 
         <!-- Navigation menu -->
         @livewire('navigation-menu')
@@ -47,17 +50,24 @@
         @endif
 
         <!-- Page Content -->
-        <main>
+        <main class="flex-grow">
             {{ $slot }}
         </main>
     </div>
+
+    <!-- Page footer -->
+    <footer class="bg-white shadow-lg mb-0">
+        <div class="max-w-7xl mx-auto text-xs shadow-lg text-center py-3 ">
+            The IT Academy League! &copy; 2023 by Eduard Vendrell
+        </div>
+    </footer>
 
     @stack('modals')
 
     <!-- to incorporate Livewire scripts -->
     @livewireScripts
 
-    {{-- SweetAlert2 script  (1st msg, 2nd msg, ['success'/--}}
+    {{-- SweetAlert2 script  (1st msg, 2nd msg, ['success'/'error'/...] --}}
     <script>
         Livewire.on('alert', function(msg_1, msg_2, msg_3) {
             Swal.fire(
@@ -66,9 +76,8 @@
                 msg_3
             )
         })
-    </script>
-    <script>
-        Livewire.on('alert_delete', function(msg_1) {
+
+        Livewire.on('alert_delete', function(msg_1, item) {
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -79,11 +88,12 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Livewire.emitTo(msg_1, 'delete')
+                    Livewire.emitTo(msg_1, 'delete', item)
                 }
             })
         })
     </script>
+
 </body>
 
 </html>

@@ -23,7 +23,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}"  >
-                        <x-application-mark class="block h-8 w-auto transition-transform transform hover:rotate-180    hoover:scale-x-[-1]" />
+                        <x-application-mark class="block h-8 w-auto transition-transform transform hover:rotate-180" />
                     </a>
                 </div>
 
@@ -32,6 +32,10 @@
 
                     <x-nav-link href="{{ route('home')}}" :active=" request()->routeIs('home')">
                         {{ __('Home')}}
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('calendar')}}" :active=" request()->routeIs('calendar')">
+                        {{ __('Calendar')}}
                     </x-nav-link>
 
                     @auth
@@ -174,7 +178,13 @@
             
             <x-responsive-nav-link href="{{ route('home')}}" :active="request()->routeIs('home')">
                 {{ __('Home')}}
-            </x-responsive-nav-link>    
+            </x-responsive-nav-link> 
+            
+            
+            <x-responsive-nav-link href="{{ route('calendar')}}" :active=" request()->routeIs('calendar')">
+                {{ __('Calendar')}}
+            </x-responsive-nav-link>
+
 
             @auth
                 @foreach ($nav_links as $nav_link)
