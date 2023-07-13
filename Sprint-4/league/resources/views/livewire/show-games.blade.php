@@ -153,7 +153,7 @@
                                     {{-- Table row column: Team 1 --}}
                                     <td class=" px-3 py-5 border-b border-gray-200  text-sm">
                                         <div class="flex flex-col items-center text-center sm:flex-row-reverse ">
-                                            <div class="order-2 sm:order-2 sm:text-right text-gray-900 whitespace-no-wrap">
+                                            <div class="mr-2 order-2 sm:order-2 sm:text-right text-gray-900 whitespace-no-wrap">
                                                     {{$item->team_1->name}}
                                             </div>
 
@@ -168,7 +168,7 @@
                                     {{-- Table row column: Score --}}
                                     <td class="w-16 py-5 border-b border-gray-200  text-sm">
                                         <div class="ml-3">
-                                            <p class="text-gray-900 whitespace-no-wrap">
+                                            <p class="text-gray-900 text-center whitespace-no-wrap">
                                                 {{$item->score_team_1}}
                                                 -
                                                 {{$item->score_team_2}}
@@ -186,7 +186,7 @@
                                                     src="{{$item->team_2->emblem_photo}}"
                                                     alt="" />
                                             </div>
-                                            <div class="order-2 sm:no-order sm:text-left text-gray-900 whitespace-no-wrap">
+                                            <div class="ml-2 order-2 sm:no-order sm:text-left text-gray-900 whitespace-no-wrap">
                                                     {{$item->team_2->name}}
                                             </div>
 
