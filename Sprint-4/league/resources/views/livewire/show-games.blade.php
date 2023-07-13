@@ -8,9 +8,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {{-- search bar & Creata Game button --}}
-        <div class="py-4 flex items-center">
+        <div class="py-4 flex flex-col sm:flex-row items-center">
 
-            <div class="flex items-center ">
+            <div class="flex items-center mb-1 sm:mb-0">
                 <span class="ml-2 text-xs uppercase text-gray-900">Items</span>
                 <select class="ml-2 mr-4 border-gray-300 text-md  text-gray-700 rounded-lg shadow-lg"
                         wire:model="items">
@@ -21,7 +21,7 @@
                 </select>
             </div>
 
-            <x-input class="flex-1 mr-4 cursor-pointer" placeholder="Search game by team..." type="text" wire:model="search">
+            <x-input class="flex-1 sm:mr-4 cursor-pointer mb-2 w-full sm:w-auto sm:mb-0" placeholder="Search game by team..." type="text" wire:model="search">
             </x-input>
             @livewire('create-game')
         </div>
@@ -153,7 +153,7 @@
                                     {{-- Table row column: Team 1 --}}
                                     <td class=" px-3 py-5 border-b border-gray-200  text-sm">
                                         <div class="flex flex-col items-center text-center sm:flex-row-reverse ">
-                                            <div class="mr-2 order-2 sm:order-2 sm:text-right text-gray-900 whitespace-no-wrap">
+                                            <div class="order-2 sm:order-2 sm:text-right sm:mr-1 text-gray-900 whitespace-no-wrap">
                                                     {{$item->team_1->name}}
                                             </div>
 
@@ -166,9 +166,9 @@
 
                                     </td>
                                     {{-- Table row column: Score --}}
-                                    <td class="w-16 py-5 border-b border-gray-200  text-sm">
-                                        <div class="ml-3">
-                                            <p class="text-gray-900 text-center whitespace-no-wrap">
+                                    <td class="w-16 py-5  border-b border-gray-200  text-sm">
+                                        <div class="">
+                                            <p class="text-gray-900  text-center whitespace-no-wrap">
                                                 {{$item->score_team_1}}
                                                 -
                                                 {{$item->score_team_2}}
@@ -186,7 +186,7 @@
                                                     src="{{$item->team_2->emblem_photo}}"
                                                     alt="" />
                                             </div>
-                                            <div class="ml-2 order-2 sm:no-order sm:text-left text-gray-900 whitespace-no-wrap">
+                                            <div class="order-2 sm:no-order sm:text-left sm:ml-1 text-gray-900 whitespace-no-wrap">
                                                     {{$item->team_2->name}}
                                             </div>
 
