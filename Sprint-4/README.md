@@ -162,10 +162,12 @@ Use the command "php artisan migrate:refresh --seed" to create the database and 
 
 ## Useful links:
 
-- **Livewire pagination with Search and Sorting**: https://makitweb.com/create-livewire-pagination-with-search-filter-and-sorting-in-laravel/#create-component
-- **defer loading**: https://laravel-livewire.com/docs/2.x/defer-loading
-- **free Tailwind components**:\
-      https://tailwindcomponents.com/component/calendar-ui-with-tailwindcss-and-alpinejs/landing\
+- [**Livewire pagination with Search and Sorting**](https://makitweb.com/create-livewire-pagination-with-search-filter-and-sorting-in-laravel/#create-component)
+- [**Defer Loading**](https://laravel-livewire.com/docs/2.x/defer-loading)
+- [**free Tailwind components**:]()\
+      https://tailwindcomponents.com/component/calendar-ui-with-tailwindcss-and-alpinejs/landing \
       https://freefrontend.com/tailwind-spinners/ \
-      https://v1.tailwindcss.com/components/alerts \
-- **Laravel Livewire update dependent select menu's on change**: https://www.youtube.com/watch?v=JXtZdnUv7IE
+      https://v1.tailwindcss.com/components/alerts 
+- [**Laravel Livewire update dependent select menu's on change**](https://www.youtube.com/watch?v=JXtZdnUv7IE)
+- [**Laravel 9 JetStream Livewire CRUD Operations Tutorial**](https://medium.com/@laraveltuts/laravel-9-jetstream-livewire-crud-operations-tutorial-628e4783cce2)
+- [**Mailtrap**](https://mailtrap.io/signin)
