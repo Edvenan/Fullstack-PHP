@@ -168,3 +168,4 @@ Use the command "php artisan migrate:refresh --seed" to create the database and 
       https://tailwindcomponents.com/component/calendar-ui-with-tailwindcss-and-alpinejs/landing\
       https://freefrontend.com/tailwind-spinners/ \
       https://v1.tailwindcss.com/components/alerts \
+- **Laravel Livewire update dependent select menu's on change**: https://www.youtube.com/watch?v=JXtZdnUv7IE
