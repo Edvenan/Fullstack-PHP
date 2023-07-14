@@ -318,7 +318,7 @@
     </div>
 
     {{-- Show Modal --}}
-    <x-dialog-modal x-show="open_show" wire:model='open_show'>
+    <x-dialog-modal wire:model='open_show'>
 
         <x-slot name='title'>
             <p class="flex justify-center text-center">Show Team</p>
@@ -333,7 +333,7 @@
                     src="{{$team->emblem_photo}}"
                     class="rounded-t mx-auto h-32 " />
 
-                <figcaption class="p-4 mt-auto w-full mx-auto ">
+                <figcaption class="p-1 sm:p-4 mt-auto w-full mx-auto ">
                     <!-- Name -->
                     <p
                         class="h-16 flex justify-center text-center text-lg mb-4 font-bold  text-gray-800 dark:text-gray-300">
@@ -372,31 +372,31 @@
                                         
                                     </th>
                                     <th {{-- Table header: Games Won --}}
-                                        class="px-2 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell">
+                                        class="px-2 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden sm:table-cell">
                                         Won
        
                                     </th>
                                     <th {{-- Table header: Games Draw --}}
-                                        class="px-2 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell">
+                                        class="px-2 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden sm:table-cell">
                                         Draw
 
                                     </th>
                                     <th {{-- Table header: Games Lost --}}
-                                        class="px-2 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell">                                       Lost
+                                        class="px-2 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden sm:table-cell">                                       Lost
 
                                     </th>
                                     <th {{-- Table header: Goals --}}
-                                        class="px-2 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell">
+                                        class="px-2 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden sm:table-cell">
                                         Goals
 
                                     </th>
                                     <th {{-- Table header: Goals Against --}}
-                                        class="px-2 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell">
+                                        class="px-2 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden sm:table-cell">
                                         Against
 
                                     </th>
                                     <th {{-- Table header: Goal Average --}}
-                                        class="px-2 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden md:table-cell">
+                                        class="px-2 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden sm:table-cell">
                                         +/-.
         
                                     </th>
@@ -419,32 +419,32 @@
                                                 {{$team->num_games}}
                                             </p>
                                         </td>
-                                        <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                                        <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm hidden sm:table-cell">
                                             <p class="text-gray-900 whitespace-no-wrap text-center">
                                                 {{$team->won}}
                                             </p>
                                         </td>
-                                        <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                                        <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm hidden sm:table-cell">
                                             <p class="text-gray-900 whitespace-no-wrap text-center">
                                                 {{$team->draw}}
                                             </p>
                                         </td>
-                                        <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                                        <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm hidden sm:table-cell">
                                             <p class="text-gray-900 whitespace-no-wrap text-center">
                                                 {{$team->lost}}
                                             </p>
                                         </td>
-                                        <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                                        <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm hidden sm:table-cell">
                                             <p class="text-gray-900 whitespace-no-wrap text-center">
                                                 {{$team->goals}}
                                             </p>
                                         </td>
-                                        <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                                        <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm hidden sm:table-cell">
                                             <p class="text-gray-900 whitespace-no-wrap text-center">
                                                 {{$team->against}}
                                             </p>
                                         </td>
-                                        <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm hidden md:table-cell">
+                                        <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm hidden sm:table-cell">
                                             <p class="text-gray-900 whitespace-no-wrap text-center">
                                                 {{$team->average}}
                                             </p>
@@ -473,7 +473,7 @@
                                 <thead> {{-- Table header --}}
                                     <tr class="border-gray-400">
                                         <th {{-- Table header: Team 1--}}
-                                            class= "py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider">
+                                            class= "cursor-pointer py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider">
                                             Local
                                         </th>
                                         <th {{-- Table header: Score --}}
@@ -481,19 +481,19 @@
                                             <p></p>
                                         </th>   
                                         <th {{-- Table header: Team 2 --}}
-                                            class="px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider">
+                                            class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider">
                                             Visitor
                                         </th>
                                         <th {{-- Table header: Date --}}
-                                            class="px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider">
+                                            class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider">
                                             Date
                                         </th>
                                         <th {{-- Table header: Time --}}
-                                            class="px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell">
+                                            class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden sm:table-cell">
                                             Time
                                         </th>
                                         <th {{-- Table header: Stadium --}}
-                                            class="px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden lg:table-cell">
+                                            class="cursor-pointer px-3 py-3 border-b-4 border-gray-200 bg-gray-700 text-center text-xs font-semibold text-gray-100 uppercase tracking-wider hidden sm:table-cell">
                                             Stadium
                                         </th>
                                     </tr>
@@ -501,62 +501,68 @@
                                 <tbody>
                                     @foreach ($team->games() as $item)
             
-                                        <tr class="bg-white ">
-                                            <td class="px-3 py-5 border-b border-gray-200  text-sm">
-                                                <div class="block">
-                                                    <div class="mx-auto w-10 h-10">
-                                                        <img class="w-full h-full "
-                                                            
-                                                            src="{{$item->team_1->emblem_photo}}"
-                                                            alt="" />
-                                                    </div>
-                                                    <div class="min-w-28">
-                                                        <p class="text-center text-gray-900 whitespace-no-wrap">
-                                                            {{$item->team_1->name}}
-                                                        </p>
-                                                    </div>
+                                    <tr class="bg-white ">
+                                        {{-- Table row column: Team 1 --}}
+                                        <td class=" px-3 py-5 border-b border-gray-200   text-xs sm:text-sm">
+                                            <div class="flex flex-col items-center text-center sm:flex-row-reverse ">
+                                                <div class="order-2 sm:order-2 sm:text-right sm:mr-1 text-gray-900 whitespace-no-wrap">
+                                                        {{$item->team_1->name}}
                                                 </div>
-                                            </td>
-                                            <td class=" py-5 border-b border-gray-200  text-sm">
-                                                <div class="ml-3">
-                                                    <div class="flex justify-between text-center text-gray-900 ">
-                                                        <div>{{$item->score_team_1}}</div>
-                                                        <div>-</div>
-                                                        <div>{{$item->score_team_2}}</div>
-                                                    </div>
+    
+                                                <div class="order-1 sm:order-1 text-gray-900 h-10 w-full sm:w-10 ">
+                                                    <img class=" mx-auto h-full sm:float-right"
+                                                        src="{{$item->team_1->emblem_photo}}"
+                                                        alt="" />
                                                 </div>
-                                            </td>
-                                            <td class="px-3 py-5 border-b border-gray-200  text-sm">
-                                                <div class="block">
-                                                    <div class="mx-auto w-10 h-10">
-                                                        <img class="w-full h-full "
-                                                            
-                                                            src="{{$item->team_2->emblem_photo}}"
-                                                            alt="" />
-                                                    </div>
-                                                    <div class="min-w-28">
-                                                        <p class="text-center text-gray-900 whitespace-no-wrap">
-                                                            {{$item->team_2->name}}
-                                                        </p>
-                                                    </div>
+                                            </div>
+    
+                                        </td>
+                                        {{-- Table row column: Score --}}
+                                        <td class="w-16 py-5  border-b border-gray-200  text-sm">
+                                            <div class="">
+                                                <p class="text-gray-900  text-center whitespace-no-wrap">
+                                                    {{$item->score_team_1}}
+                                                    -
+                                                    {{$item->score_team_2}}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        {{-- Table row column: Team 2 --}}
+                                        <td class="px-3 py-5 border-b border-gray-200  text-xs sm:text-sm">
+    
+                                            <div class="flex flex-col items-center text-center sm:flex-row ">
+                                                
+                                                <div class="order-1 sm:no-order text-gray-900 h-10 w-full sm:w-10 ">
+                                                    <img class="mx-auto h-full sm:float-left "
+                                                        
+                                                        src="{{$item->team_2->emblem_photo}}"
+                                                        alt="" />
                                                 </div>
-                                            </td>
-                                            <td class="px-3 py-5 border-b border-gray-200  text-sm">
-                                                <p class="text-gray-900 whitespace-no-wrap text-center">
-                                                    {{date('j F, Y', strtotime($item->date))}}
-                                                </p>
-                                            </td>
-                                            <td class="px-3 py-5 border-b border-gray-200  text-sm hidden lg:table-cell">
-                                                <p class="text-gray-900 whitespace-no-wrap text-center">
-                                                    {{\Carbon\Carbon::createFromFormat('H:i:s',$item->time)->format('H:i')}}
-                                                </p>
-                                            </td>
-                                            <td class="px-3 py-5 border-b border-gray-200  text-sm hidden lg:table-cell">
-                                                <p class="text-gray-900 whitespace-no-wrap text-center">
-                                                    {{$item->team_1->stadium}}
-                                                </p>
-                                            </td>
-                                        </tr>
+                                                <div class="order-2 sm:no-order sm:text-left sm:ml-1 text-gray-900 whitespace-no-wrap">
+                                                        {{$item->team_2->name}}
+                                                </div>
+    
+                                            </div>
+                                        </td>
+                                        {{-- Table row column: Date --}}
+                                        <td class="px-3 py-5 border-b border-gray-200   text-xs sm:text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap text-center">
+                                                {{date('j F, Y', strtotime($item->date))}}
+                                            </p>
+                                        </td>
+                                        {{-- Table row column: Time --}}
+                                        <td class="px-3 py-5 border-b border-gray-200  text-sm hidden sm:table-cell">
+                                            <p class="text-gray-900 whitespace-no-wrap text-center">
+                                                {{\Carbon\Carbon::createFromFormat('H:i:s',$item->time)->format('H:i')}}
+                                            </p>
+                                        </td>
+                                        {{-- Table row column: Stadium --}}
+                                        <td class="px-3 py-5 border-b border-gray-200  text-sm hidden sm:table-cell">
+                                            <p class="text-gray-900 whitespace-no-wrap text-center">
+                                                {{$item->team_1->stadium}}
+                                            </p>
+                                        </td>
+                                    </tr>
                                         
                                     @endforeach
                                 </tbody>
