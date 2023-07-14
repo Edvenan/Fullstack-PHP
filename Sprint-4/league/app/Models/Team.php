@@ -38,11 +38,11 @@ class Team extends Model
 
     /**
      * Method to get all the team's games
-     *
+     * ordered by date
      */
     // 
     public function games(){
-        $games = Game::where('team_1_id', $this->id)->orWhere('team_2_id', $this->id)->get();
+        $games = Game::where('team_1_id', $this->id)->orWhere('team_2_id', $this->id)->orderBy('date', 'asc')->get();
         return $games;
     }
 
