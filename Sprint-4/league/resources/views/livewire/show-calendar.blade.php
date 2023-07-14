@@ -33,7 +33,7 @@
             }
         @endphp
 
-        <div x-data="app()" x-init="[initDate(), getNoOfDays()]" class="x-cloak max-w-7xl mx-auto px-1 sm:px-4 md:px-6 lg:px-8 sm:mt-8" >
+        <div x-data="app()" x-init="[initDate(), getNoOfDays()]" class="max-w-7xl mx-auto px-1 sm:px-4 md:px-6 lg:px-8 sm:mt-8" >
             <div class="container mx-auto px-1 sm:px-4 py-2 ">
                 <div class="bg-white  rounded-lg shadow-lg overflow-hidden">
                     
@@ -135,8 +135,10 @@
                 </div>
             </div>
 
-            <!-- Game Details Modal -->
-            <div style=" background-color: rgba(0, 0, 0, 0.8)" class="fixed z-40 top-0 right-0 left-0 bottom-0 h-full w-full" x-show.transition.opacity="openEventModal">
+
+        <!-- Game Details Modal -->
+
+            <div style=" background-color: rgba(0, 0, 0, 0.8)" class=" fixed z-40 top-0 right-0 left-0 bottom-0 h-full w-full" x-cloak x-show.transition.opacity="openEventModal">
                 <div class="p-4 max-w-xl mx-auto  absolute left-0 right-0 overflow-hidden mt-24">
                     <div class="shadow absolute right-0 top-0 w-10 h-10 rounded-full bg-white text-gray-500 hover:text-gray-800 inline-flex items-center justify-center "
                         x-on:click="openEventModal = !openEventModal">
@@ -200,6 +202,7 @@
 
         function app() {
             return {
+                openEventModal: false,
                 month: '',
                 year: '',
                 no_of_days: [],
@@ -241,7 +244,7 @@
                     }
                 ],
 
-                openEventModal: false,
+                
 
                 initDate() {
                     let today = new Date();
