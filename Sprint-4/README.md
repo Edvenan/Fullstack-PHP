@@ -32,6 +32,7 @@ In order to provide page reactivity, **livewire components** have been used to c
 - 404 (error view)
 - Database-Connection (error view)
 
+<br>
 
 ## Functionality
 
@@ -46,6 +47,19 @@ This app supports 2 type of users (registered and unregistered) and the function
 - **create**, **update** and **delete** teams
 - **create**, **update** and **delete** games
 
+To become a registered user, a username, password and email must be provided and the latter must be verified (email verification process). Once registered, the user can add his photo/avatar so that it is shown in the nav bar during the session. \
+This app version comes with a pre-registered user:
+
+- Email: defcon@one.com 
+- Password: 1Laravel
+- User's picture: stored in /resources/images/David_Lightman.jpg 
+
+In order to be able to store the user's picture, the following steps must be followed in advance:
+1) Delete 'storage' shortcut link from /public folder 
+2) run 'php artisan storage:link' 
+3) proceed to chose the user photo via the 'Manage Account' nav menu option.
+
+<br>
 
 **Creating Teams**
 
@@ -54,12 +68,14 @@ Registered users can create teams by indicating the following fields:
 - **Required:** Name, Foundation Year (between 1850-2023) and Stadium
 - **Not required:** emblem url (a default url will be used if not filled)
 
+<br>
 
 **Editing Teams**
 
 Registered users are able to edit all the teams fields:  Name, Foundation Year (between 1850-2023), Emblem and Stadium.\
 Changes in some of these fields (Name, Stadium, Emblem) will be cascaded to Games.
 
+<br>
 
 **Deleting Teams**
 
@@ -68,6 +84,7 @@ Registered users are able to delete teams. Deletion of a team will translate int
 - the revertion or undo of the resulting statistics of the games in the adversary teams (points, goals, games played, etc.).
 To sum up, deleting a team is equivalent to as if the team never existed and that no other team has ever played against it.
 
+<br>
 
 **Creating Games**
 
@@ -75,6 +92,7 @@ Registered users can create games by indicating the following fields:
 
 - **Required:** Local team, Visitor teams, game Date and Time. (The Stadium will be automatically populated with the local team's stadium)
 
+<br>
 
 **Editing Games**
 
@@ -89,12 +107,14 @@ Example: \
 Team A plays Team B and Team A wins. That means that Team A statistics show 1 win and Team B's show 1 loss.\
 We edit that game and make Team B the winner. The app will then revert the original result in both teams' statistics and apply the new score, resulting in Team A showing 1 loss and Team B 1 win.
 
+<br>
 
 **Deleting Games**
 
 Registered users are able to delete a game. Deletion of a game will translate into the revertion or undo of the resulting statistics of the game in both local and visitor teams (points, goals, games played, etc.).\
 To sum up, deleting a game is equivalent to as if the game between both local and visitor teams never took place.
 
+<br>
 
 **Statistics:**
 
@@ -107,21 +127,27 @@ Example: \
  Team A got 1 point and Team B got 1 point.\
  When Team A is deleted, Team B's points are updated by substracting the 1 point won against Team A.
 
+<br>
 
 **Sorting by categories**
 
 Users can order or sort the listing results of both the ranking and games list page by categories (or columns) and in both ascending and descending order, just by clicking on the corresponding column header.
+
+<br>
 
 **Search Bar**
 
 By using the search bar, users will be able to filter and find games (by typing team names) and teams (by typing name, stadium name or foundation year).\
 Sorting can also be applied to the search results.
 
+<br>
 
  **Dynamic Pagination:**
 
 All the app lists (ranking and games) are paginated and the user can select the number of items shown per page via a select element.\
 Pagination is dynamic so there is no need to load the page every time we select a different page.
+
+<br>
 
 ## Other features
 
