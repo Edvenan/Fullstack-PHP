@@ -3,7 +3,7 @@
 ## Introduction
 This web app allows the user to follow a sports league (ranking, teams, calendar and games) as well as manage its key elements such as the teams and games.
 
-## Arquitecture
+## Architecture
 The app has been developed using Laravel - PHP framework and following a MVC design pattern. \
 The CRUD functions have been architectured as follows:
 
